@@ -5,7 +5,7 @@ import cart from '../assets/Icons/Cart1.png'
 import React from 'react'
 import { designSystem } from '../App'
 
-function NavBar() {
+function NavBar({setCurrentTab}) {
     const selectedTab = {
         borderBottom: '1px solid black',
         borderBottomWidth: '2px',
@@ -36,13 +36,13 @@ function NavBar() {
             variant='unstyled'>
                 <TabList
 
-                gap='38px'
+                gap='30px'
                 fontFamily={designSystem.font1}
                 fontWeight='bold'>
-                    <Tab _selected={selectedTab}>Home</Tab>
-                    <Tab _selected={selectedTab}>Contact</Tab>
-                    <Tab _selected={selectedTab}>About</Tab>
-                    <Tab _selected={selectedTab}>Sign Up</Tab>
+                    <Tab onClick={()=>setCurrentTab('Home')} _selected={selectedTab}>Home</Tab>
+                    <Tab onClick={()=>setCurrentTab('Contact')} _selected={selectedTab}>Contact</Tab>
+                    <Tab onClick={()=>setCurrentTab('About')} _selected={selectedTab}>About</Tab>
+                    <Tab onClick={()=>setCurrentTab('SignUp')} _selected={selectedTab}>Sign Up</Tab>
                 </TabList>
             </Tabs>
             <HStack marginLeft='148px'>

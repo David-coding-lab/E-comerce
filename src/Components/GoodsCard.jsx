@@ -3,7 +3,7 @@ import Rating from './Rating'
 import { designSystem } from '../App'
 import favorite from '../assets/Icons/Wishlist.png'
 import eye from '../assets/Icons/Cart1.png'
-function GoodsCard({cardImage,discountPercent,cardName,currentPrice,oldPrice,rating}) {
+function GoodsCard({cardImage,discountPercent,cardName,currentPrice,oldPrice,rating, hasBadge, BadgeColor}) {
     const buttonStyle = {
         w: '50px',
         h: '50px',
@@ -53,18 +53,21 @@ function GoodsCard({cardImage,discountPercent,cardName,currentPrice,oldPrice,rat
                 width='100%'
                 pt='15px'
                 >
-                    <Badge
+                    {hasBadge &&
+                        <Badge
 
-                    marginTop='10px'
-                    marginLeft='10px'
-                    bgColor={designSystem.secondary2}
-                    color='white'
-                    fontWeight='normal'
-                    h='26px'
-                    w='55px'
-                    display='grid'
-                    placeContent='center'
-                    >{discountPercent}</Badge>
+                        marginTop='10px'
+                        marginLeft='10px'
+                        bgColor={BadgeColor}
+                        color='white'
+                        fontWeight='normal'
+                        h='26px'
+                        w='55px'
+                        display='grid'
+                        placeContent='center'
+                        >{discountPercent}
+                    </Badge>}
+
                     <VStack>
                     <Button
 

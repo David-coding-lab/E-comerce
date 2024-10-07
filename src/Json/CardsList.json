@@ -1,0 +1,172 @@
+[
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "HAVIT HV-G92 Gamepad",
+        "currentPrice": "$120",
+        "oldPrice": "$160",
+        "rating": 88
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "AK-900 Wired Keyboard",
+        "currentPrice": "$960",
+        "oldPrice": "$1160",
+        "rating": 75
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "IPS LCD Gaming Monitor",
+        "currentPrice": "$370",
+        "oldPrice": "$400",
+        "rating": 99
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "S-Series Comfort Chair ",
+        "currentPrice": "$375",
+        "oldPrice": "$400",
+        "rating": 99
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "S-Series Comfort Chair ",
+        "currentPrice": "$375",
+        "oldPrice": "$400",
+        "rating": 300
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "The north coat",
+        "currentPrice": "$260",
+        "oldPrice": "$360",
+        "rating": 65
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "Gucci duffle bag",
+        "currentPrice": "$960",
+        "oldPrice": "$1160",
+        "rating": 65
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "RGB liquid CPU Cooler",
+        "currentPrice": "$160",
+        "oldPrice": "$170",
+        "rating": 65
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "Small BookSelf",
+        "currentPrice": "$360",
+        "oldPrice": "$400",
+        "rating": 65
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "Breed Dry Dog Food",
+        "currentPrice": "$100",
+        "oldPrice": "",
+        "rating": 300
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "CANON EOS DSLR Camera",
+        "currentPrice": "$360",
+        "oldPrice": "0",
+        "rating": 95
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "ASUS FHD Gaming Laptop",
+        "currentPrice": "$700",
+        "oldPrice": "0",
+        "rating": 325
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "Curology Product Set",
+        "currentPrice": "$500",
+        "oldPrice": "0",
+        "rating": 145
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary3",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "Kids Electric Car",
+        "currentPrice": "$960",
+        "oldPrice": "0",
+        "rating": 65
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "Jr. Zoom Soccer Cleats",
+        "currentPrice": "$1160",
+        "oldPrice": "0",
+        "rating": 35
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary3",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "GP11 Shooter USB Gamepad",
+        "currentPrice": "$660",
+        "oldPrice": "0",
+        "rating": 55
+    },
+    {
+        "hasBadge": true,
+        "BadgeColor": "designSystem.secondary2",
+        "discountPercent": "-40%",
+        "cardImage": "gamePad",
+        "cardName": "Quilted Satin Jacket",
+        "currentPrice": "$660",
+        "oldPrice": "0",
+        "rating": 55
+    }
+]

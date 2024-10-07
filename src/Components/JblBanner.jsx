@@ -37,7 +37,7 @@ function JblBanner() {
                 color='white'
                 letterSpacing='2px'
                 fontFamily={designSystem.font2}
-                fontSize='35px'
+                fontSize={designSystem.headingSize1}
                 fontWeight='bold'>Enhance Your Music Experience</Text>
                 <HStack fontFamily={designSystem.font1} gap='15px'>
                     <Box sx={timerStyles}>
