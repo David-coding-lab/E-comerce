@@ -16,8 +16,10 @@ function JblBanner() {
         <Container
 
         display='flex'
+        mt='140px'
+        mb='71px'
         bgColor='#000000'
-        maxW='60vw'
+        maxW='100vw'
         h='420px'
         alignItems='center'
         position='relative'
@@ -38,7 +40,7 @@ function JblBanner() {
                 letterSpacing='2px'
                 fontFamily={designSystem.font2}
                 fontSize={designSystem.headingSize1}
-                fontWeight='bold'>Enhance Your Music Experience</Text>
+                fontWeight='bold'>Enhance Your <br /> Music Experience</Text>
                 <HStack fontFamily={designSystem.font1} gap='15px'>
                     <Box sx={timerStyles}>
                         <Text textAlign='center' fontSize='12px' fontWeight='medium'>23 <br /> Hours</Text>
@@ -69,18 +71,18 @@ function JblBanner() {
                 <Box
 
                 position='absolute'
-                w='350px'
-                h='350px'
+                w='460px'
+                h='460px'
                 bgColor='#D9D9D9'
-                opacity='30%'
+                opacity='20%'
                 filter='blur(20px)'
-                left='50%'
+                left='60%'
                 borderRadius='50%'
                 ></Box>
                 <Image
 
                 zIndex='1'
-                w='504px'
+                w='650px'
                 ml='auto'
                 src={jblimage}
                 alt='JBL' />

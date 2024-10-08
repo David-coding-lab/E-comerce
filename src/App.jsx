@@ -14,7 +14,6 @@ export const designSystem = {
 
 import { Box,Button,Text,Menu,MenuButton,MenuList,MenuItem, background, HStack, Container } from '@chakra-ui/react'
 import { ChevronDownIcon} from '@chakra-ui/icons'
-import gamePad from './assets/gamepad.png'
 import GoodsCard from './Components/GoodsCard'
 import JblBanner from './Components/JblBanner'
 import { color } from 'framer-motion'

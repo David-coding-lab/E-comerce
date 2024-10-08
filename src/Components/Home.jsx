@@ -2,14 +2,31 @@ import { Box, Button, HStack, Text, VStack } from '@chakra-ui/react'
 import BannerLinks from './BannerLinks'
 import { designSystem } from '../App'
 import FlashSale from './FlashSale'
+import { Data } from '../data/CardsList'
+import GoodsCard from './GoodsCard'
+import JblBanner from './JblBanner'
 
 function Home() {
-    const cards = ['fish', 'MAN', 'COW', 'JEFF', 'KEG', 'MONEEY', 'Random', 'things', 'man',]
+    const products = Data.map((products,index) =>((
+        <GoodsCard
+
+        key={index}
+        discountPercent={products.discountPercent}
+        cardImage={products.cardImage}
+        cardName={products.cardName}
+        currentPrice={products.currentPrice}
+        oldPrice={products.oldPrice}
+        rating={products.rating}
+        hasBadge = {products.hasBadge}
+        BadgeColor={products.BadgeColor}
+        />
+    )))
+
     return (
         <Box marginInline={designSystem.defaultMargin}>
             <BannerLinks />
 
-
+        {/*re-usable component  */}
             <FlashSale
 
             badgeText={'Today’s'}
@@ -31,7 +48,19 @@ function Home() {
                     </HStack>
             }
             allowNavigation={true}
-            cards={cards}
+            cards={products}
+            />
+
+            <JblBanner />
+
+            <FlashSale
+
+            badgeText={'Our Products'}
+            sectionTItel={'Explore Our Projects'}
+            allowNavigation={false}
+            buttonContent='View All Products'
+            width='200px'
+            cards={products}
             />
         </Box>
     )

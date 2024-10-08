@@ -1,15 +1,14 @@
-import { Badge, Box, Button, Card, CardBody, CardFooter, CardHeader, Flex, HStack, Icon, IconButton, Text, VStack } from "@chakra-ui/react"
+import { Badge, Box, Button, Card, CardBody, CardFooter, CardHeader, Flex, HStack, Icon, IconButton, SimpleGrid, Text, VStack } from "@chakra-ui/react"
 import { designSystem } from "../App"
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons"
 import GoodsCard from "./GoodsCard"
-import gamePad from '../assets/gamePad.png'
 import CtaButtons from "./CtaButtons"
 import { useState } from "react"
 
 function FlashSale({allowNavigation, width, buttonContent, sectionTItel, additionalContent, badgeText, cards}) {
     const items = [...cards];
     const [startIndex, setStartIndex] = useState(0);
-    const itemsToShow = 4; // Number of items to show at a time
+    const itemsToShow = 5; // Number of items to show at a time
 
         // Function to handle the NextArrow click
     const handleNext = () => {
@@ -32,13 +31,15 @@ function FlashSale({allowNavigation, width, buttonContent, sectionTItel, additio
         if(allowNavigation)
             return(
                 <>
-                    <IconButton onClick={()=> handlePrev()} mr='10px' isRound={true}><ArrowBackIcon /></IconButton>
+                    <IconButton  onClick={()=> handlePrev()} mr='10px' isRound={true}><ArrowBackIcon /></IconButton>
                     <IconButton onClick={()=> handleNext()} isRound={true}><ArrowForwardIcon /></IconButton>
                 </>
             )
             else
                 return(
-                    <CtaButtons width={width && width} buttonContent={buttonContent && buttonContent} />
+                    <Box ml='auto'>
+                        <CtaButtons width={width && width} buttonContent={buttonContent && buttonContent} />
+                    </Box>
                 )
     }
     return (
@@ -106,22 +107,33 @@ function FlashSale({allowNavigation, width, buttonContent, sectionTItel, additio
 
             <Box >
 
-                <Box display='flex' overflow='hidden'>
-                    {allowNavigation ?
-                        visibleItems.map((item, index) => (
-                            <Box key={index} style={{ padding: '10px', border: '1px solid black', minWidth: '100px' }}>
-                                {item}
-                            </Box>
-                            )):cards.slice(0, 7)
-                    }
-                </Box>
+                {allowNavigation ?
+
+                    <Box
+
+                    w='90vw'
+                    display='flex'
+                    gap='30px'
+                    overflow='hidden'>
+                        {[...visibleItems]}
+                    </Box>:
+
+                    <SimpleGrid
+
+                    columns={4}
+                    gap='65px'
+                    overflow='hidden'>
+                        {cards.slice(0, 8)}
+                    </SimpleGrid>
+                }
+
 
         </Box>
             </CardBody>
 
             <CardFooter justifyContent='center' p='60px' borderBottom='1px solid rgba(84, 84, 88, 0.3)'>
 
-                <CtaButtons width='234px' buttonContent='View All Products'/>
+                {allowNavigation & <CtaButtons width='234px' buttonContent='View All Products'/>}
             </CardFooter>
         </Card>
     )
@@ -138,7 +150,7 @@ export default FlashSale
 // currentPrice='$120'
 // oldPrice='$160'
 // rating={300}
-// hasBadge = {true}
+// hasBadge = {TRUE}
 // />
 // <GoodsCard
 

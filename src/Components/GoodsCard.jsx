@@ -41,6 +41,7 @@ function GoodsCard({cardImage,discountPercent,cardName,currentPrice,oldPrice,rat
 
                     w='170px'
                     h='152px'
+                    objectFit='contain'
                     src={cardImage} alt='card'
                     />
                 </Box>
@@ -58,7 +59,7 @@ function GoodsCard({cardImage,discountPercent,cardName,currentPrice,oldPrice,rat
 
                         marginTop='10px'
                         marginLeft='10px'
-                        bgColor={BadgeColor}
+                        bgColor={BadgeColor==='designSystem.secondary2' ? designSystem.secondary2 : designSystem.secondary3}
                         color='white'
                         fontWeight='normal'
                         h='26px'
@@ -92,7 +93,7 @@ function GoodsCard({cardImage,discountPercent,cardName,currentPrice,oldPrice,rat
                 <HStack mb='5px'>
 
                     <Text>{currentPrice}</Text>
-                    <Text as='s'>{oldPrice}</Text>
+                    {oldPrice && <Text as='s'>{oldPrice}</Text>}
                 </HStack>
 
                     <Rating rating={rating} />
