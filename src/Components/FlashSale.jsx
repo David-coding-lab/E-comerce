@@ -59,6 +59,7 @@ function FlashSale({allowNavigation, width, buttonContent, sectionTItel, additio
                 <Badge
 
                     bgColor='transparent'
+                    color={designSystem.secondary2}
                     textTransform='capitalize'
                     fontSize={designSystem.textSize1}
                     display='flex'
@@ -106,26 +107,15 @@ function FlashSale({allowNavigation, width, buttonContent, sectionTItel, additio
             >
 
             <Box >
-
-                {allowNavigation ?
-
-                    <Box
-
-                    w='90vw'
-                    display='flex'
-                    gap='30px'
-                    overflow='hidden'>
-                        {[...visibleItems]}
-                    </Box>:
-
                     <SimpleGrid
 
-                    columns={4}
-                    gap='65px'
-                    overflow='hidden'>
-                        {cards.slice(0, 8)}
+                    w={allowNavigation ? '90vw' : 'auto'}
+                    columns={allowNavigation ?itemsToShow : '4'}
+                    gridRowGap='10px'
+                    gridColumnGap={allowNavigation ? '0': '65px ' }
+                    >
+                        {allowNavigation ? [...visibleItems] : cards.slice(0, 8)}
                     </SimpleGrid>
-                }
 
 
         </Box>
@@ -133,7 +123,7 @@ function FlashSale({allowNavigation, width, buttonContent, sectionTItel, additio
 
             <CardFooter justifyContent='center' p='60px' borderBottom='1px solid rgba(84, 84, 88, 0.3)'>
 
-                {allowNavigation & <CtaButtons width='234px' buttonContent='View All Products'/>}
+                {allowNavigation && <CtaButtons width='234px' buttonContent='View All Products'/>}
             </CardFooter>
         </Card>
     )

@@ -1,10 +1,14 @@
-import { Box, Button, HStack, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Flex, HStack, Image, Img, Text, VStack } from '@chakra-ui/react'
 import BannerLinks from './BannerLinks'
 import { designSystem } from '../App'
 import FlashSale from './FlashSale'
 import { Data } from '../data/CardsList'
 import GoodsCard from './GoodsCard'
 import JblBanner from './JblBanner'
+import NewArival from './NewArival'
+import customerCare from '../assets/CustomerService.png'
+import deliveryCar from '../assets/delivery.png'
+import padlocGuard from '../assets/Secure.png'
 
 function Home() {
     const products = Data.map((products,index) =>((
@@ -62,6 +66,43 @@ function Home() {
             width='200px'
             cards={products}
             />
+
+            <NewArival />
+
+
+
+            <Flex
+
+            mt='166px'
+            width='100'
+            bgColor='red'
+            justifyContent='center'
+            alignItems='center'
+            gap='88px'
+            h='auto'
+            >
+                <Box>
+                    <Box><Image src={deliveryCar} /></Box>
+                    <VStack>
+                        <Text>FREE AND FAST DELIVERY</Text>
+                        <Text>Free delivery for all orders over $140</Text>
+                    </VStack>
+                </Box>
+                <Box>
+                    <Box><Image src={customerCare}/></Box>
+                    <VStack>
+                        <Text>24/7 CUSTOMER SERVICE</Text>
+                        <Text>Friendly 24/7 customer support</Text>
+                    </VStack>
+                </Box>
+                <Box>
+                    <Box><Image src={padlocGuard}/></Box>
+                    <VStack>
+                        <Text>MONEY BACK GUARANTEE</Text>
+                        <Text>We reurn money within 30 days</Text>
+                    </VStack>
+                </Box>
+            </Flex>
         </Box>
     )
 }

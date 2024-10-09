@@ -9,8 +9,8 @@ function Rating({rating}) {
         const stars = Array.from({ length: totalStars }, (v, i) => (
             <Image
                 key={i}
-                src={i < rating/50 ? fullStar : emptyStar}
-                alt={i < rating/50 ? 'full star' : 'empty star'}
+                src={i < rating/30 ? fullStar : emptyStar}
+                alt={i < rating/30 ? 'full star' : 'empty star'}
             />
         ))
     return (
