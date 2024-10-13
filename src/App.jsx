@@ -23,6 +23,7 @@ import Contact from './Components/Contact'
 import About from './Components/About'
 import SignUp from './Components/SignUp'
 import { useState } from 'react'
+import Footer from './Components/Footer'
 function App() {
 
 
@@ -116,6 +117,7 @@ function App() {
 
 
 
+    <Footer />
 
 
 

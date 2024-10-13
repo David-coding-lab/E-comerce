@@ -37,6 +37,7 @@ function NavBar({setCurrentTab}) {
                 <TabList
 
                 gap='30px'
+                w='450px'
                 fontFamily={designSystem.font1}
                 fontWeight='bold'>
                     <Tab onClick={()=>setCurrentTab('Home')} _selected={selectedTab}>Home</Tab>

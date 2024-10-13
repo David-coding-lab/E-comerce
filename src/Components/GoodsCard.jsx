@@ -1,9 +1,12 @@
-import { Badge, Box, Button, Card, CardBody, CardFooter, HStack, Image, Text, VStack } from '@chakra-ui/react'
+import { Badge, Box, Button, Card, CardBody, CardFooter, Flex, HStack, Image, Text, VStack } from '@chakra-ui/react'
 import Rating from './Rating'
 import { designSystem } from '../App'
 import favorite from '../assets/Icons/Wishlist.png'
 import eye from '../assets/Icons/Cart1.png'
-function GoodsCard({cardImage,discountPercent,cardName,currentPrice,oldPrice,rating, hasBadge, BadgeColor}) {
+import { useState } from 'react'
+import Like from './Like'
+function GoodsCard({cardImage,discountPercent,cardName,currentPrice,oldPrice,rating, hasBadge, BadgeColor, noOtherColor,OtherColor,showFullView,setShowFullProductDetails, produnctImages}) {
+    const [currentActiveImage,setCurrentActiveImage] = useState(cardImage)
     const buttonStyle = {
         w: '50px',
         h: '50px',
@@ -19,6 +22,7 @@ function GoodsCard({cardImage,discountPercent,cardName,currentPrice,oldPrice,rat
         boxShadow='none'
         borderRadius='0'
         fontFamily={designSystem.font1}
+        mb='20px'
         >
             <CardBody
 
@@ -27,24 +31,71 @@ function GoodsCard({cardImage,discountPercent,cardName,currentPrice,oldPrice,rat
             width='100%'
             h='250px'
             p='0'
+            role='group'
             >
                 <Box
-
+                    onClick={()=> {
+                        showFullView(true)
+                        setShowFullProductDetails(prevDetails => ({
+                            ...prevDetails,
+                            productsTitle: cardName,
+                            productRating: rating,
+                            productPrice: currentPrice,
+                            currentImage: cardImage,
+                            OtherColor: OtherColor,
+                            produnctImages: [...produnctImages]
+                        }))}
+                    }
                 w= '100%'
                 h='250px'
                 backgroundColor={designSystem.secondary}
                 display='flex'
                 justifyContent='center'
                 alignItems='center'
+                cursor='pointer'
                 >
                     <Image
 
                     w='170px'
                     h='152px'
                     objectFit='contain'
-                    src={cardImage} alt='card'
+                    src={currentActiveImage} alt='card'
+                    cursor='pointer'
+                    zIndex='1'
+                    onClick={()=> {
+                        showFullView(true)
+                        setShowFullProductDetails(prevDetails => ({
+                            ...prevDetails,
+                            productsTitle: cardName,
+                            productRating: rating,
+                            productPrice: currentPrice,
+                            currentImage: cardImage,
+                            OtherColor: OtherColor,
+                            produnctImages: [...produnctImages]
+                        }))}
+                    }
                     />
                 </Box>
+                <Button
+                w='100%'
+                h='41px'
+                borderRadius='0'
+                top={noOtherColor ? '80%' : '83%'}
+                color='white'
+                bgColor='black'
+                fontWeight='normal'
+                visibility='hidden'
+                opacity='0'
+                position='absolute'
+                transition='visibility .5s ease-in-out opacity .5s ease-in-out'
+                _hover={{bgColor:'#454444'}}
+                _groupHover={
+                    {
+                        visibility: 'visible',
+                        opacity: '1'
+                    }
+                }
+                >Add to Cart</Button>
                 <Box
 
                 display='flex'
@@ -70,10 +121,7 @@ function GoodsCard({cardImage,discountPercent,cardName,currentPrice,oldPrice,rat
                     </Badge>}
 
                     <VStack>
-                    <Button
-
-                    sx={buttonStyle}
-                    ><Image src={favorite} alt='icon'/></Button>
+                    <Like />
                     <Button
 
                     sx={buttonStyle}
@@ -97,6 +145,29 @@ function GoodsCard({cardImage,discountPercent,cardName,currentPrice,oldPrice,rat
                 </HStack>
 
                     <Rating rating={rating} />
+
+                    {
+                        !noOtherColor &&
+                        <Flex gap='20px'>
+                            <Box
+                            bgColor={designSystem.secondary2}
+                            borderRadius='50%'
+                            border='1px solid black'
+                            cursor='pointer'
+                            w='20px'
+                            onClick={()=> setCurrentActiveImage(cardImage)}
+                            h='20px'></Box>
+                            <Box
+                            bgColor='#F5F5F5'
+                            borderRadius='50%'
+                            border='1px solid black'
+                            cursor='pointer'
+                            w='20px'
+                            h='20px'
+                            onClick={()=> setCurrentActiveImage(OtherColor[0])}
+                            ></Box>
+                        </Flex>
+                    }
             </CardFooter>
         </Card>
     )

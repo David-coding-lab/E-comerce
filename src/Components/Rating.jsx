@@ -1,9 +1,10 @@
-import { Box, HStack, Image } from "@chakra-ui/react"
+import { Box, HStack, Image, Text } from "@chakra-ui/react"
 import fullStar from '../assets/Icons/star.svg'
 import emptyStar from '../assets/Icons/emptystar.png'
+import { color } from "framer-motion";
 
 
-function Rating({rating}) {
+function Rating({rating,textColor}) {
         const totalStars = 5; // Assuming a 5-star rating system
         // Generate stars
         const stars = Array.from({ length: totalStars }, (v, i) => (
@@ -18,7 +19,7 @@ function Rating({rating}) {
             <HStack>
                 {stars}
             </HStack>
-            ({rating})
+            <Text ml='5px' color={textColor && textColor}>({rating})</Text>
         </Box>
     )
 }

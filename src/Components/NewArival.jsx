@@ -1,15 +1,19 @@
-import { Badge, Box, Card, CardBody, CardHeader, flexbox, Grid, GridItem, Image, position, Text } from '@chakra-ui/react'
+import { Badge, Box, Card, CardBody, CardHeader, flexbox, Grid, GridItem, Image, position, Text, transition } from '@chakra-ui/react'
 import { designSystem } from '../App'
 import ps5 from '../assets/ps5.png'
 import speakers from '../assets/jblSpeakers.png'
 import gucciPerfumes from '../assets/GucciPerfuems.png'
 import womenHair from '../assets/attractive-woman-wearing-hat-posing.png'
-import { color } from 'framer-motion'
 
 function NewArival() {
     const boxStyles = {
         bgColor: '#0D0D0D',
         position: 'relative',
+        transition: 'transform .3s ease-in-out, border-radius .3s ease-in-out',
+        _hover: {
+            'border-radius': '10px',
+            transform: 'translateY(-20px)'
+        }
     }
     const detailsTextStyles = {
         fontFamily: designSystem.font1,
@@ -44,6 +48,7 @@ function NewArival() {
                 justifyContent='space-between'
                 gap='25px'
                 p='0'
+                mb='20px'
             >
 
 
@@ -74,7 +79,7 @@ function NewArival() {
 
                         fontSize={designSystem.headingSize2}
                         fontWeight='medium'
-                        marginRight='87px'
+                        mr='87px'
                         as='h1'
                         >New Arrival</Text>
             </CardHeader>
@@ -93,6 +98,11 @@ function NewArival() {
                     rowSpan={2}
                     colSpan={1}
                     sx={boxStyles}
+                    _hover={
+                        {
+                            transform: 'translateY(-20px)'
+                        }
+                    }
                     w='630px'
                     alignItems='end'
                     pl='32px'
@@ -119,6 +129,11 @@ function NewArival() {
                     w='600px'
                     h='300px'
                     sx={boxStyles}
+                    _hover={
+                        {
+                            transform: 'translateY(-20px)'
+                        }
+                    }
                     display='flex'
                     alignItems='end'
                     cursor='pointer'
@@ -154,6 +169,11 @@ function NewArival() {
                         colSpan={1}
                         w='290px'
                         sx={boxStyles}
+                        _hover={
+                            {
+                                transform: 'translateY(-10px)'
+                            }
+                        }
                         display='flex'
                         alignItems='end'
                         pb='24px'
@@ -181,6 +201,11 @@ function NewArival() {
                         <Box
                         w='290px'
                         sx={boxStyles}
+                        _hover={
+                            {
+                                transform: 'translateY(-10px)'
+                            }
+                        }
                         display='flex'
                         alignItems='end'
                         >

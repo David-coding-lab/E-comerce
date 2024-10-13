@@ -121,7 +121,7 @@ function FlashSale({allowNavigation, width, buttonContent, sectionTItel, additio
         </Box>
             </CardBody>
 
-            <CardFooter justifyContent='center' p='60px' borderBottom='1px solid rgba(84, 84, 88, 0.3)'>
+            <CardFooter justifyContent='center' p='60px' >
 
                 {allowNavigation && <CtaButtons width='234px' buttonContent='View All Products'/>}
             </CardFooter>
@@ -130,51 +130,3 @@ function FlashSale({allowNavigation, width, buttonContent, sectionTItel, additio
 }
 
 export default FlashSale
-
-
-// <GoodsCard
-
-// discountPercent='-40%'
-// cardImage={gamePad}
-// cardName='HAVIT HV-G92 Gamepad'
-// currentPrice='$120'
-// oldPrice='$160'
-// rating={300}
-// hasBadge = {TRUE}
-// />
-// <GoodsCard
-
-// discountPercent='-40%'
-// cardImage={gamePad}
-// cardName='HAVIT HV-G92 Gamepad'
-// currentPrice='$120'
-// oldPrice='$160'
-// rating={300}
-// />
-// <GoodsCard
-
-// discountPercent='-40%'
-// cardImage={gamePad}
-// cardName='HAVIT HV-G92 Gamepad'
-// currentPrice='$120'
-// oldPrice='$160'
-// rating={300}
-// />
-// <GoodsCard
-
-// discountPercent='-40%'
-// cardImage={gamePad}
-// cardName='HAVIT HV-G92 Gamepad'
-// currentPrice='$120'
-// oldPrice='$160'
-// rating={300}
-// />
-// <GoodsCard
-
-// discountPercent='-40%'
-// cardImage={gamePad}
-// cardName='HAVIT HV-G92 Gamepad'
-// currentPrice='$120'
-// oldPrice='$160'
-// rating={300}
-// />
