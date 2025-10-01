@@ -1,6 +1,6 @@
 import { Badge, Box, Button, Container, Flex, HStack, Icon, createIcon, Image, Img, Text, VStack, Divider } from '@chakra-ui/react'
 import BannerLinks from './BannerLinks'
-import { designSystem } from '../App'
+import { designSystem } from '../designSystem'
 import FlashSale from './FlashSale'
 import { Data } from '../data/CardsList'
 import GoodsCard from './GoodsCard'

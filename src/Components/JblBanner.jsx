@@ -1,6 +1,6 @@
 import { Box, Button, Text, HStack, Image, Container, border } from "@chakra-ui/react"
 import jblimage from '../assets/jblimage.png'
-import { designSystem } from "../App"
+import { designSystem } from "../designSystem"
 
 function JblBanner() {
     const timerStyles = {

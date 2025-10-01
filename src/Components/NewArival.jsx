@@ -1,5 +1,5 @@
 import { Badge, Box, Card, CardBody, CardHeader, flexbox, Grid, GridItem, Image, position, Text, transition } from '@chakra-ui/react'
-import { designSystem } from '../App'
+import { designSystem } from '../designSystem'
 import ps5 from '../assets/ps5.png'
 import speakers from '../assets/jblSpeakers.png'
 import gucciPerfumes from '../assets/GucciPerfuems.png'

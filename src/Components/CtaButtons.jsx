@@ -1,6 +1,6 @@
 import { Button } from '@chakra-ui/react'
 import React from 'react'
-import { designSystem } from '../App'
+import { designSystem } from '../designSystem'
 
 function CtaButtons({width, buttonContent}) {
     return (

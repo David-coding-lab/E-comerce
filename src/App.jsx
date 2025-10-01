@@ -1,22 +1,8 @@
-export const designSystem = {
-  headingSize1:'36px',
-  headingSize2: '28px',
-  textSize1: '16px',
-  textSize2: '12px',
-  font1: 'poppins',
-  font2: 'Inter',
-  secondary: '#F5F5F5',
-  secondary2: '#DB4444',
-  secondary3: '#00FF66',
-  defaultMargin: '135px'
-}
+import { designSystem } from './designSystem'
 
 
-import { Box,Button,Text,Menu,MenuButton,MenuList,MenuItem, background, HStack, Container } from '@chakra-ui/react'
+import { Box,Button,Text,Menu,MenuButton,MenuList,MenuItem, HStack, useBreakpointValue } from '@chakra-ui/react'
 import { ChevronDownIcon} from '@chakra-ui/icons'
-import GoodsCard from './Components/GoodsCard'
-import JblBanner from './Components/JblBanner'
-import { color } from 'framer-motion'
 import NavBar from './Components/NavBar'
 import Home from './Components/Home'
 import Contact from './Components/Contact'
@@ -24,6 +10,7 @@ import About from './Components/About'
 import SignUp from './Components/SignUp'
 import { useState } from 'react'
 import Footer from './Components/Footer'
+import DesktopOnlyGate from './Components/DesktopOnlyGate'
 function App() {
 
 
@@ -31,8 +18,6 @@ function App() {
 
 
   const buttonStyle = {
-
-
     background: 'transparent',
     borderRadius: '0',
     color: 'white',
@@ -46,27 +31,30 @@ function App() {
   }
 
 
+  const isDesktop = useBreakpointValue({ base: false, sm: false, md: false, lg: true })
+
+  if (!isDesktop) {
+    return <DesktopOnlyGate />
+  }
+
   return(
 
     <Box as='div'
-
-    w='flex'
-    h='100vh'
-  >
-
-
-    <Container
+      w='auto'
+      h='100vh'
+    >
 
 
-    maxW='100vw'
-    h='48px'
-    bgColor='black'
-    display='flex'
-    justifyContent='space-between'
-    alignItems='center'
-    paddingInline={designSystem.defaultMargin}
-    color='white'
-    fontFamily={designSystem.font1}
+    <Box
+      w='100vw'
+      h='48px'
+      bgColor='black'
+      display='flex'
+      justifyContent='space-between'
+      alignItems='center'
+      paddingInline={designSystem.defaultMargin}
+      color='white'
+      fontFamily={designSystem.font1}
     >
       <HStack>
         <Text>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!</Text>
@@ -104,7 +92,7 @@ function App() {
           </>
         )}
       </Menu>
-    </Container>
+    </Box>
 
 
     <NavBar setCurrentTab={setCurrentTab}/>
@@ -118,18 +106,6 @@ function App() {
 
 
     <Footer />
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     {/* <GoodsCard

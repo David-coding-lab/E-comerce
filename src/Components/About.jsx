@@ -9,7 +9,7 @@ import linkedin from '../assets/Icons/Icon-Linkedin.png'
 import customerCare from '../assets/CustomerService.png'
 import deliveryCar from '../assets/delivery.png'
 import padlocGuard from '../assets/Secure.png'
-import { designSystem } from '../App'
+import { designSystem } from '../designSystem'
 function About() {
   const containerStyles = {
     maxW:'270px',

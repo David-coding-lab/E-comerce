@@ -13,7 +13,7 @@ import {
     CloseButton
 } from '@chakra-ui/react'
 import Rating from './Rating'
-import { designSystem } from '../App'
+import { designSystem } from '../designSystem'
 import FastDeliveryIcon from '../assets/Icons/icon-delivery.png'
 import ReturnIcon from '../assets/Icons/Icon-return.png'
 import { useState } from 'react'

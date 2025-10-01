@@ -1,7 +1,7 @@
 import { EmailIcon, PhoneIcon } from '@chakra-ui/icons'
 import { Box, Button, Container, Divider, Flex, Grid, GridItem, HStack, IconButton, Input, SimpleGrid, Text, Textarea, VStack } from '@chakra-ui/react'
 import React from 'react'
-import { designSystem } from '../App'
+import { designSystem } from '../designSystem'
 
 function Contact() {
   return (

@@ -2,7 +2,7 @@ import { Box, Flex, VStack, Image, Input, Text, Button, IconButton, HStack } fro
 import { useState } from 'react'
 import phone from '../assets/Icons/dl.beatsnoop 1.png'
 import google from '../assets/Icons/Icon-Google.png'
-import { designSystem } from '../App'
+import { designSystem } from '../designSystem'
 
 function SignUp() {
   const [signUp,setSignUp] = useState(true)

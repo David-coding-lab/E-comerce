@@ -3,7 +3,7 @@ import { Flex, HStack, Text, Tabs, TabList, TabPanels, Tab, TabPanel, Input, But
 import whisList from '../assets/Icons/Wishlist.png'
 import cart from '../assets/Icons/Cart1.png'
 import React from 'react'
-import { designSystem } from '../App'
+import { designSystem } from '../designSystem'
 
 function NavBar({setCurrentTab}) {
     const selectedTab = {

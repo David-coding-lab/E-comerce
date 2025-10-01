@@ -7,7 +7,7 @@ import {
     ListItem,
     ListIcon,
 } from '@chakra-ui/react'
-import { designSystem } from '../App'
+import { designSystem } from '../designSystem'
 function BannerLinks() {
     return (
         <Container display='flex' maxW='100vw' mb='140px'>

@@ -1,9 +1,9 @@
 import { Badge, Box, Button, Card, CardBody, CardFooter, CardHeader, Flex, HStack, Icon, IconButton, SimpleGrid, Text, VStack } from "@chakra-ui/react"
-import { designSystem } from "../App"
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons"
 import GoodsCard from "./GoodsCard"
 import CtaButtons from "./CtaButtons"
 import { useState } from "react"
+import { designSystem } from "../designSystem"
 
 function FlashSale({allowNavigation, width, buttonContent, sectionTItel, additionalContent, badgeText, cards}) {
     const items = [...cards];

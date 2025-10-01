@@ -7,7 +7,7 @@ import faceBookIcon from '../assets/Icon-Facebook.png'
 import tweeterIcon from '../assets/Icon-Twitter.png'
 import instagramICon from '../assets/icon-instagram.png'
 import linkedIn from '../assets/Icon-Linkedin.png'
-import { designSystem } from '../App'
+import { designSystem } from '../designSystem'
 import { useState } from 'react'
 function Footer() {
     const [footerEmail,SelfooterEmail] = useState('Email here')

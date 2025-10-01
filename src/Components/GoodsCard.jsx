@@ -1,6 +1,6 @@
 import { Badge, Box, Button, Card, CardBody, CardFooter, Flex, HStack, Image, Text, VStack } from '@chakra-ui/react'
 import Rating from './Rating'
-import { designSystem } from '../App'
+import { designSystem } from '../designSystem'
 import favorite from '../assets/Icons/Wishlist.png'
 import eye from '../assets/Icons/Cart1.png'
 import { useState } from 'react'
