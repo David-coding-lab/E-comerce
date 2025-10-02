@@ -1,16 +1,16 @@
 import { Badge, Box, Button, Container, Flex, HStack, Icon, createIcon, Image, Img, Text, VStack, Divider } from '@chakra-ui/react'
-import BannerLinks from './BannerLinks'
 import { designSystem } from '../designSystem'
-import FlashSale from './FlashSale'
-import { Data } from '../data/CardsList'
-import GoodsCard from './GoodsCard'
-import JblBanner from './JblBanner'
-import NewArival from './NewArival'
 import customerCare from '../assets/CustomerService.png'
 import deliveryCar from '../assets/delivery.png'
 import padlocGuard from '../assets/Secure.png'
-import ProductCliked from './ProductCliked'
 import { useState } from 'react'
+import BannerLinks from '../Components/BannerLinks'
+import { Data } from '../data/CardsList'
+import GoodsCard from '../Components/GoodsCard'
+import FlashSale from '../Components/FlashSale'
+import JblBanner from '../Components/JblBanner'
+import NewArival from '../Components/NewArival'
+import ProductCliked from '../Components/ProductCliked'
 
 function Home() {
     const [showProductFullView,setShowProductFullView] = useState(false)
@@ -26,20 +26,20 @@ function Home() {
     const products = Data.map((products,index) =>((
         <GoodsCard
 
-        key={index}
-        discountPercent={products.discountPercent}
-        cardImage={products.cardImage}
-        cardName={products.cardName}
-        currentPrice={products.currentPrice}
-        oldPrice={products.oldPrice}
-        rating={products.rating}
-        hasBadge = {products.hasBadge}
-        BadgeColor={products.BadgeColor}
-        noOtherColor={products.noOtherColor}
-        OtherColor={products.OtherColor}
-        produnctImages={products.produnctImages}
-        showFullView = {setShowProductFullView}
-        setShowFullProductDetails={setShowFullProductDetails}
+            key={index}
+            discountPercent={products.discountPercent}
+            cardImage={products.cardImage}
+            cardName={products.cardName}
+            currentPrice={products.currentPrice}
+            oldPrice={products.oldPrice}
+            rating={products.rating}
+            hasBadge = {products.hasBadge}
+            BadgeColor={products.BadgeColor}
+            noOtherColor={products.noOtherColor}
+            OtherColor={products.OtherColor}
+            produnctImages={products.produnctImages}
+            showFullView = {setShowProductFullView}
+            setShowFullProductDetails={setShowFullProductDetails}
         />
     )))
     const footerParentBoxStyles ={
