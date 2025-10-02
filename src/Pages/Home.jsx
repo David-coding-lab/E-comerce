@@ -3,7 +3,7 @@ import { designSystem } from '../designSystem'
 import customerCare from '../assets/CustomerService.png'
 import deliveryCar from '../assets/delivery.png'
 import padlocGuard from '../assets/Secure.png'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import BannerLinks from '../Components/BannerLinks'
 import { Data } from '../data/CardsList'
 import GoodsCard from '../Components/GoodsCard'
@@ -11,8 +11,29 @@ import FlashSale from '../Components/FlashSale'
 import JblBanner from '../Components/JblBanner'
 import NewArival from '../Components/NewArival'
 import ProductCliked from '../Components/ProductCliked'
+import { fetchProducts } from '../Services/ProductsActions'
+import Loading from '../Components/Loading'
 
 function Home() {
+    const [productsName, setProductsName] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        const getProducts = async () => {
+            try {
+                // You can use the result of fetchProducts if it returns data
+                (await fetchProducts()).rows.forEach((product) => {
+                    setProductsName((prevProds)=> [...prevProds, product.productName])
+                })
+            } catch (error) {
+                console.error("Failed to fetch products:", error)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+        getProducts()
+    }, [])
+
     const [showProductFullView,setShowProductFullView] = useState(false)
     const [showFullProductDetails,setShowFullProductDetails] = useState({
         productsTitle: '',
@@ -29,7 +50,7 @@ function Home() {
             key={index}
             discountPercent={products.discountPercent}
             cardImage={products.cardImage}
-            cardName={products.cardName}
+            cardName={productsName ? productsName[index] : products.cardName}
             currentPrice={products.currentPrice}
             oldPrice={products.oldPrice}
             rating={products.rating}
@@ -71,10 +92,14 @@ function Home() {
         borderRadius:'4px',
         transition:'background-color .2s ease-out, border .3s ease-out',
         _hover: {
-                    backgroundColor: designSystem.secondary2,
-                    border: 'none',
-                    color: 'white'
-        }
+            backgroundColor: designSystem.secondary2,
+            border: 'none',
+            color: 'white',
+        },
+    }
+
+    if (isLoading) {
+        return <Loading />
     }
 
     return (

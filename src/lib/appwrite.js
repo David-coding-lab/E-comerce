@@ -1,11 +1,12 @@
-import { Client, Account, Databases} from 'appwrite';
+import { Client, Account, TablesDB } from 'appwrite'
 
-export const client = new Client();
+export const client = new Client()
 
 client
-  .setEndpoint('https://fra.cloud.appwrite.io/v1')
-  .setProject('exclusiveecommerceapp'); // Replace with your project ID
+  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT)
+  .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID) // Replace with your project ID
 
-export const account = new Account(client);
+export const account = new Account(client)
+export const tablesDB = new TablesDB(client);
+export { ID } from 'appwrite'
 
-export { ID } from 'appwrite';
