@@ -13,7 +13,7 @@ import { useState } from 'react'
 import Rating from '../common/Rating'
 import Like from '../common/Like'
 import { designSystem } from '../../styles/theme'
-import { useProductView } from '../../context/productViewContext'
+import { useProductActions } from '../../context/productViewContext'
 import fastDeliveryIcon from '../../assets/Icons/icon-delivery.png'
 import returnIcon from '../../assets/Icons/Icon-return.png'
 
@@ -82,7 +82,7 @@ const quantityBoxStyles = {
 const sizes = ['XS', 'S', 'M', 'L', 'XL']
 
 function ProductModal({ product }) {
-  const { closeProduct } = useProductView()
+  const { closeProduct } = useProductActions()
   const [currentImage, setCurrentImage] = useState(product.image)
   const [quantity, setQuantity] = useState(0)
 
@@ -100,7 +100,11 @@ function ProductModal({ product }) {
               sx={thumbnailStyles}
               onClick={() => setCurrentImage(image)}
             >
-              <Image src={image} alt={`${name} view ${index + 1}`} />
+              <Image
+                src={image}
+                alt={`${name} view ${index + 1}`}
+                decoding='async'
+              />
             </Box>
           ))}
         </Container>

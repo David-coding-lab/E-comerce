@@ -13,6 +13,7 @@ import {
   Text,
   Textarea,
 } from '@chakra-ui/react'
+import BackButton from '../components/common/BackButton'
 import { designSystem } from '../styles/theme'
 
 const contactCardStyles = {
@@ -50,15 +51,17 @@ const sendButtonStyles = {
 
 function Contact() {
   return (
-    <Flex
-      marginInline={designSystem.defaultMargin}
-      w='100%'
-      h='70vh'
-      justifyContent='center'
-      alignItems='center'
-      mb='50px'
-    >
-      <Container sx={contactCardStyles}>
+    <Box marginInline={designSystem.defaultMargin}>
+      <BackButton mt='40px' />
+
+      <Flex
+        w='100%'
+        h='70vh'
+        justifyContent='center'
+        alignItems='center'
+        mb='50px'
+      >
+        <Container sx={contactCardStyles}>
         <Box>
           <HStack mb='24px'>
             <IconButton sx={iconButtonStyles} aria-label='Call us'>
@@ -89,28 +92,29 @@ function Contact() {
         </Box>
       </Container>
 
-      <SimpleGrid columns={3} spacing={4}>
-        <GridItem colSpan={1}>
-          <Input sx={inputStyles} placeholder='Your Name *' />
-        </GridItem>
-        <GridItem colSpan={1}>
-          <Input sx={inputStyles} placeholder='Your Email *' />
-        </GridItem>
-        <GridItem colSpan={1}>
-          <Input sx={inputStyles} placeholder='Your Phone *' />
-        </GridItem>
-        <GridItem colSpan={3}>
-          <Textarea
-            sx={inputStyles}
-            h='207px'
-            placeholder='Your Message'
-          />
-        </GridItem>
-        <GridItem colSpan={3} textAlign='right'>
-          <Button sx={sendButtonStyles}>Send Message</Button>
-        </GridItem>
-      </SimpleGrid>
-    </Flex>
+        <SimpleGrid columns={3} spacing={4}>
+          <GridItem colSpan={1}>
+            <Input sx={inputStyles} placeholder='Your Name *' />
+          </GridItem>
+          <GridItem colSpan={1}>
+            <Input sx={inputStyles} placeholder='Your Email *' />
+          </GridItem>
+          <GridItem colSpan={1}>
+            <Input sx={inputStyles} placeholder='Your Phone *' />
+          </GridItem>
+          <GridItem colSpan={3}>
+            <Textarea
+              sx={inputStyles}
+              h='207px'
+              placeholder='Your Message'
+            />
+          </GridItem>
+          <GridItem colSpan={3} textAlign='right'>
+            <Button sx={sendButtonStyles}>Send Message</Button>
+          </GridItem>
+        </SimpleGrid>
+      </Flex>
+    </Box>
   )
 }
 

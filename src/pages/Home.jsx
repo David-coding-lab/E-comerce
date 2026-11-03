@@ -3,7 +3,7 @@ import { designSystem } from '../styles/theme'
 import { products } from '../data/products'
 import BannerLinks from '../components/home/BannerLinks'
 import FlashSale from '../components/home/FlashSale'
-import JblBanner from '../components/home/JblBanner'
+import FlashProductBanner from '../components/home/FlashProductBanner'
 import NewArrival from '../components/home/NewArrival'
 import Countdown from '../components/home/Countdown'
 import SectionHeader from '../components/common/SectionHeader'
@@ -17,12 +17,12 @@ import headphoneIcon from '../assets/Icons/Category-Headphone.svg'
 import gamepadIcon from '../assets/Icons/Category-Gamepad.svg'
 
 const categories = [
-  { label: 'Phones', icon: cellPhoneIcon },
-  { label: 'Computers', icon: computerIcon },
-  { label: 'SmartWatch', icon: smartWatchIcon },
-  { label: 'Camera', icon: cameraIcon },
-  { label: 'HeadPhones', icon: headphoneIcon },
-  { label: 'Gaming', icon: gamepadIcon },
+  { label: 'Phones', icon: cellPhoneIcon, slug: 'phones' },
+  { label: 'Computers', icon: computerIcon, slug: 'computers' },
+  { label: 'SmartWatch', icon: smartWatchIcon, slug: 'smartwatch' },
+  { label: 'Camera', icon: cameraIcon, slug: 'camera' },
+  { label: 'HeadPhones', icon: headphoneIcon, slug: 'headphones' },
+  { label: 'Gaming', icon: gamepadIcon, slug: 'gaming' },
 ]
 
 function Home() {
@@ -36,6 +36,7 @@ function Home() {
         additionalContent={<Countdown />}
         allowNavigation
         products={products}
+        viewAllPath='/flash-sale'
       />
 
       <Divider mb='70px' />
@@ -49,6 +50,7 @@ function Home() {
               key={category.label}
               icon={category.icon}
               label={category.label}
+              slug={category.slug}
             />
           ))}
         </Flex>
@@ -62,10 +64,11 @@ function Home() {
           products={products}
           width='190px'
           buttonContent='View All'
+          viewAllPath='/best-selling'
         />
       </Box>
 
-      <JblBanner />
+      <FlashProductBanner productId='jbl-boombox-3' />
 
       <FlashSale
         badgeText='Our Products'
@@ -74,6 +77,7 @@ function Home() {
         buttonContent='View All Products'
         width='200px'
         products={products}
+        viewAllPath='/explore-products'
       />
 
       <NewArrival />

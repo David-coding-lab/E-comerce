@@ -3,12 +3,9 @@ import { Outlet } from 'react-router-dom'
 import TopBanner from './TopBanner'
 import NavBar from './NavBar'
 import Footer from './Footer'
-import ProductModal from '../product/ProductModal'
-import { useProductView } from '../../context/productViewContext'
+import ProductModalHost from '../product/ProductModalHost'
 
 function Layout() {
-  const { activeProduct } = useProductView()
-
   return (
     <Box w='100%'>
       <TopBanner />
@@ -17,9 +14,7 @@ function Layout() {
         <Outlet />
       </Box>
       <Footer />
-      {activeProduct && (
-        <ProductModal key={activeProduct.id} product={activeProduct} />
-      )}
+      <ProductModalHost />
     </Box>
   )
 }

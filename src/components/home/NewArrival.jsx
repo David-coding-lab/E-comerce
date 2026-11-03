@@ -8,12 +8,10 @@ import {
   Image,
   Text,
 } from '@chakra-ui/react'
+import { Link as RouterLink } from 'react-router-dom'
 import SectionHeader from '../common/SectionHeader'
+import { newArrivals } from '../../data/newArrivals'
 import { designSystem } from '../../styles/theme'
-import ps5 from '../../assets/ps5.png'
-import speakers from '../../assets/jblSpeakers.png'
-import gucciPerfumes from '../../assets/GucciPerfuems.png'
-import womenHair from '../../assets/attractive-woman-wearing-hat-posing.png'
 
 const boxStyles = {
   bgColor: '#0D0D0D',
@@ -41,20 +39,71 @@ const headingTextStyles = {
 }
 
 const shopNowTextStyles = {
+  display: 'inline-block',
   cursor: 'pointer',
   mt: '16px',
   w: 'fit-content',
   borderBottom: '1px',
   color: 'white',
+  textDecoration: 'none',
+  _hover: { textDecoration: 'none', color: designSystem.secondary3 },
 }
 
-function NewArrival() {
+const largeImageStyles = {
+  position: 'absolute',
+  left: '50px',
+  top: '100px',
+  w: '500px',
+}
+
+const wideImageStyles = {
+  position: 'absolute',
+  left: '167px',
+}
+
+const smallImageStyles = {
+  position: 'absolute',
+  top: '50px',
+  left: '40px',
+}
+
+function ArrivalContent({ item }) {
   return (
-    <Card mt='80px' boxShadow='none'>
+    <Box position='relative' zIndex='10' color='white'>
+      <Text sx={headingTextStyles} as='h3'>
+        {item.title}
+      </Text>
+      {item.description && (
+        <Text sx={detailsTextStyles}>{item.description}</Text>
+      )}
+      <Text as={RouterLink} to={item.link} sx={shopNowTextStyles}>
+        {item.linkLabel ?? 'Shop Now'}
+      </Text>
+    </Box>
+  )
+}
+
+function NewArrival({
+  items = newArrivals,
+  badgeText = 'Featured',
+  title = 'New Arrival',
+}) {
+  const large = items.find((item) => item.variant === 'large') ?? items[0]
+  const wide = items.find((item) => item.variant === 'wide') ?? items[1]
+  const smallItems = items
+    .filter((item) => item.variant === 'small')
+    .slice(0, 2)
+
+  if (!large) {
+    return null
+  }
+
+  return (
+    <Card mt='80px' pb='30px' boxShadow='none'>
       <CardHeader p='0' mb='20px'>
         <SectionHeader
-          badgeText='Featured'
-          title='New Arrival'
+          badgeText={badgeText}
+          title={title}
           titleFontWeight='medium'
         />
       </CardHeader>
@@ -80,114 +129,54 @@ function NewArrival() {
             cursor='pointer'
           >
             <Image
-              position='absolute'
-              left='50px'
-              top='100px'
-              w='500px'
-              src={ps5}
-              alt='PlayStation 5'
+              sx={{ ...largeImageStyles, ...large.imageProps }}
+              src={large.image}
+              alt={large.imageAlt ?? large.title}
             />
-            <Box zIndex='10' color='white'>
-              <Text sx={headingTextStyles} as='h3'>
-                PlayStation 5
-              </Text>
-              <Text sx={detailsTextStyles}>
-                Black and White version of the PS5 <br />
-                coming out on sale.
-              </Text>
-              <Text sx={shopNowTextStyles}>Shop Now</Text>
-            </Box>
+            <ArrivalContent item={large} />
           </GridItem>
 
-          <GridItem
-            rowSpan={1}
-            colSpan={1}
-            w='600px'
-            h='300px'
-            sx={boxStyles}
-            display='flex'
-            alignItems='end'
-            cursor='pointer'
-          >
-            <Box
-              h='150px'
-              w='285px'
-              ml='24px'
-              mb='24px'
-              zIndex='10'
-              boxSizing='border-box'
-            >
-              <Text sx={headingTextStyles} as='h3'>
-                Women’s Collections
-              </Text>
-              <Text sx={detailsTextStyles}>
-                Featured woman collections that give you another vibe.
-              </Text>
-              <Text sx={shopNowTextStyles}>Shop Now</Text>
-            </Box>
-            <Image left='167px' pos='absolute' src={womenHair} alt='' />
-          </GridItem>
-
-          <GridItem cursor='pointer' display='flex' gap='23px'>
-            <Box
+          {wide && (
+            <GridItem
               rowSpan={1}
               colSpan={1}
-              w='290px'
+              w='600px'
+              h='300px'
               sx={boxStyles}
               display='flex'
               alignItems='end'
-              pb='24px'
-              pl='24px'
+              cursor='pointer'
             >
-              <Image
-                position='absolute'
-                top='50px'
-                left='40px'
-                src={speakers}
-                alt='Speakers'
-              />
-              <Box zIndex='10'>
-                <Text
-                  fontSize={designSystem.headingSize2}
-                  fontFamily={designSystem.font2}
-                  color='white'
-                  mb='5px'
-                  as='h3'
-                >
-                  Speakers
-                </Text>
-                <Text sx={detailsTextStyles}>Amazon wireless speakers</Text>
-                <Text sx={shopNowTextStyles}>Shop Now</Text>
+              <Box ml='24px' mb='24px'>
+                <ArrivalContent item={wide} />
               </Box>
-            </Box>
+              <Image
+                sx={{ ...wideImageStyles, ...wide.imageProps }}
+                src={wide.image}
+                alt={wide.imageAlt ?? wide.title}
+              />
+            </GridItem>
+          )}
 
-            <Box
-              w='290px'
-              sx={boxStyles}
-              display='flex'
-              alignItems='end'
-            >
-              <Image
-                top='50px'
-                left='40px'
-                position='absolute'
-                src={gucciPerfumes}
-                alt='Perfume'
-              />
-              <Box mb='24px' ml='24px' zIndex='10'>
-                <Text
-                  fontSize={designSystem.headingSize2}
-                  fontFamily={designSystem.font2}
-                  color='white'
-                  mb='5px'
-                  as='h3'
-                >
-                  Perfume
-                </Text>
-                <Text sx={detailsTextStyles}>GUCCI INTENSE OUD EDP</Text>
-                <Text sx={shopNowTextStyles}>Shop Now</Text>
+          <GridItem cursor='pointer' display='flex' gap='23px'>
+            {smallItems.map((item) => (
+              <Box
+                key={item.id}
+                w='290px'
+                sx={boxStyles}
+                display='flex'
+                alignItems='end'
+              >
+                <Image
+                  sx={{ ...smallImageStyles, ...item.imageProps }}
+                  src={item.image}
+                  alt={item.imageAlt ?? item.title}
+                />
+                <Box mb='24px' ml='24px'>
+                  <ArrivalContent item={item} />
+                </Box>
               </Box>
-            </Box>
+            ))}
           </GridItem>
         </Grid>
       </CardBody>

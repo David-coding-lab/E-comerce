@@ -1,6 +1,7 @@
 import { Box, Button, HStack, Input, Text, VStack } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import AuthShell from '../components/auth/AuthShell'
+import BackButton from '../components/common/BackButton'
 import { designSystem } from '../styles/theme'
 
 const inputStyles = {
@@ -37,6 +38,8 @@ function Login() {
   return (
     <AuthShell>
       <Box m='auto' ml='129px'>
+        <BackButton />
+
         <Text
           fontFamily={designSystem.font1}
           fontSize='30px'

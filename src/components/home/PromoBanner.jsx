@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Image } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
-import { useProductView } from '../../context/productViewContext'
+import { useProductActions } from '../../context/productViewContext'
 
 const bannerStyles = {
   bgColor: '#000000',
@@ -58,7 +58,7 @@ function PromoBanner({
   shopNowLabel = 'Shop Now',
   children,
 }) {
-  const { openProduct } = useProductView()
+  const { openProduct } = useProductActions()
 
   const handleShopNow = () => {
     if (onShopNow) {

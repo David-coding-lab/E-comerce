@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react'
 import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import SectionHeader from '../common/SectionHeader'
 import GoodsCard from '../product/GoodsCard'
 import CtaButtons from '../common/CtaButtons'
@@ -24,8 +25,16 @@ function FlashSale({
   additionalContent,
   badgeText,
   products,
+  viewAllPath,
 }) {
+  const navigate = useNavigate()
   const [startIndex, setStartIndex] = useState(0)
+
+  const handleViewAll = () => {
+    if (viewAllPath) {
+      navigate(viewAllPath)
+    }
+  }
 
   const handleNext = () => {
     setStartIndex((prevIndex) =>
@@ -64,7 +73,11 @@ function FlashSale({
     </>
   ) : (
     <Box ml='auto'>
-      <CtaButtons width={width} buttonContent={buttonContent} />
+      <CtaButtons
+        width={width}
+        buttonContent={buttonContent}
+        onClick={handleViewAll}
+      />
     </Box>
   )
 
@@ -82,8 +95,8 @@ function FlashSale({
         <SimpleGrid
           w={allowNavigation ? '90vw' : 'auto'}
           columns={allowNavigation ? ITEMS_TO_SHOW : 4}
-          gridRowGap='10px'
-          gridColumnGap={allowNavigation ? '0' : '65px'}
+          gridRowGap='30px'
+          gridColumnGap={allowNavigation ? '30px' : '65px'}
         >
           {visibleProducts.map((product) => (
             <GoodsCard key={product.id} product={product} />
@@ -93,7 +106,11 @@ function FlashSale({
 
       {allowNavigation && (
         <CardFooter justifyContent='center' p='60px'>
-          <CtaButtons width='234px' buttonContent='View All Products' />
+          <CtaButtons
+            width='234px'
+            buttonContent='View All Products'
+            onClick={handleViewAll}
+          />
         </CardFooter>
       )}
     </Card>

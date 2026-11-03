@@ -1,5 +1,8 @@
 import { useCallback, useMemo, useState } from 'react'
-import { ProductViewContext } from './productViewContext'
+import {
+  ActiveProductContext,
+  ProductActionsContext,
+} from './productViewContext'
 
 export function ProductViewProvider({ children }) {
   const [activeProduct, setActiveProduct] = useState(null)
@@ -7,12 +10,18 @@ export function ProductViewProvider({ children }) {
   const openProduct = useCallback((product) => setActiveProduct(product), [])
   const closeProduct = useCallback(() => setActiveProduct(null), [])
 
-  const value = useMemo(
-    () => ({ activeProduct, openProduct, closeProduct }),
-    [activeProduct, openProduct, closeProduct],
+  const actions = useMemo(
+    () => ({ openProduct, closeProduct }),
+    [openProduct, closeProduct],
   )
 
-  return <ProductViewContext.Provider value={value}>{children}</ProductViewContext.Provider>
+  return (
+    <ProductActionsContext.Provider value={actions}>
+      <ActiveProductContext.Provider value={activeProduct}>
+        {children}
+      </ActiveProductContext.Provider>
+    </ProductActionsContext.Provider>
+  )
 }
 
 export default ProductViewProvider

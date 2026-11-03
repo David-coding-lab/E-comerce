@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import AuthShell from '../components/auth/AuthShell'
+import BackButton from '../components/common/BackButton'
 import google from '../assets/Icons/Icon-Google.png'
 import { designSystem } from '../styles/theme'
 
@@ -48,6 +49,8 @@ function SignUp() {
   return (
     <AuthShell>
       <Box m='auto' ml='129px'>
+        <BackButton />
+
         <Text
           fontFamily={designSystem.font1}
           fontSize='30px'

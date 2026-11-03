@@ -20,6 +20,7 @@ import padSideView2 from '../assets/padsideview2.png'
 import padSideView3 from '../assets/padsideview3.png'
 import padSideView4 from '../assets/padsideview4.png'
 import iphone from '../assets/iphone.png'
+import jblImage from '../assets/jblimage.png'
 
 export const products = [
   {
@@ -272,6 +273,24 @@ export const featuredProduct = {
   showColors: false,
   otherColors: [],
   productImages: [iphone],
+}
+
+export const jblProduct = {
+  id: 'jbl-boombox-3',
+  image: jblImage,
+  name: 'JBL Boombox 3 Portable Speaker',
+  currentPrice: '$299',
+  oldPrice: '$349',
+  rating: 95,
+  showColors: false,
+  otherColors: [],
+  productImages: [jblImage],
+}
+
+const productCatalog = [...products, featuredProduct, jblProduct]
+
+export function getProductById(id) {
+  return productCatalog.find((product) => product.id === id)
 }
 
 export default products

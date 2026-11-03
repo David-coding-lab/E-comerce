@@ -7,6 +7,7 @@ import twitter from '../assets/Icons/Icon-Twitter.png'
 import instagram from '../assets/Icons/icon-instagram.png'
 import linkedin from '../assets/Icons/Icon-Linkedin.png'
 import ServiceHighlights from '../components/common/ServiceHighlights'
+import BackButton from '../components/common/BackButton'
 import { designSystem } from '../styles/theme'
 function About() {
   const containerStyles = {
@@ -25,7 +26,9 @@ function About() {
   }
   return (
     <Box w='100%' display='flex' flexDir='column' p='0' h='auto' mb='140px' ml={designSystem.defaultMargin}>
-      <Flex pt='100px' h='auto'>
+      <BackButton mt='40px' mb='0' />
+
+      <Flex pt='60px' h='auto'>
         <Box display='flex' flexDir='column' justifyContent='center' fontFamily={designSystem.font1}>
           <Text
             fontFamily={designSystem.font2}

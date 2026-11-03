@@ -1,4 +1,5 @@
 import { Container, Image, Text } from '@chakra-ui/react'
+import { Link as RouterLink } from 'react-router-dom'
 import { designSystem } from '../../styles/theme'
 
 const containerStyles = {
@@ -8,17 +9,27 @@ const containerStyles = {
   justifyContent: 'center',
   border: '1px solid',
   borderRadius: '4px',
+  color: 'inherit',
+  textDecoration: 'none',
+  cursor: 'pointer',
   transition: 'background-color .2s ease-out, border .3s ease-out',
   _hover: {
     backgroundColor: designSystem.secondary2,
     border: 'none',
     color: 'white',
+    textDecoration: 'none',
   },
 }
 
-function CategoryCard({ icon, label }) {
+function CategoryCard({ icon, label, slug, to }) {
   return (
-    <Container role='group' centerContent sx={containerStyles}>
+    <Container
+      as={RouterLink}
+      to={to ?? `/category/${slug}`}
+      role='group'
+      centerContent
+      sx={containerStyles}
+    >
       <Image
         src={icon}
         alt=''

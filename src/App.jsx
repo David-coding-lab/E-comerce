@@ -3,6 +3,9 @@ import { Route, Routes } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import Home from './pages/Home'
 import Category from './pages/Category'
+import FlashSalePage from './pages/FlashSalePage'
+import BestSellingPage from './pages/BestSellingPage'
+import ExploreProductsPage from './pages/ExploreProductsPage'
 import Contact from './pages/Contact'
 import About from './pages/About'
 import SignUp from './pages/SignUp'
@@ -14,6 +17,9 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path='flash-sale' element={<FlashSalePage />} />
+          <Route path='best-selling' element={<BestSellingPage />} />
+          <Route path='explore-products' element={<ExploreProductsPage />} />
           <Route path='category/:categorySlug' element={<Category />} />
           <Route path='contact' element={<Contact />} />
           <Route path='about' element={<About />} />

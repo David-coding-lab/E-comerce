@@ -9,18 +9,17 @@ import {
   HStack,
   Image,
   Text,
-  VStack,
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import Rating from '../common/Rating'
 import Like from '../common/Like'
 import { designSystem } from '../../styles/theme'
-import { useProductView } from '../../context/productViewContext'
-import eye from '../../assets/Icons/Cart1.png'
+import { useProductActions } from '../../context/productViewContext'
+import { preloadImages } from '../../utils/preloadImages'
 
 const cardStyles = {
-  w: '280px',
-  h: '360px',
+  w: '100%',
+  minW: '0',
   boxShadow: 'none',
   borderRadius: '0',
   fontFamily: designSystem.font1,
@@ -29,7 +28,7 @@ const cardStyles = {
 
 const imageBoxStyles = {
   w: '100%',
-  h: '250px',
+  h: { base: '200px', sm: '220px', md: '250px' },
   backgroundColor: designSystem.secondary,
   display: 'flex',
   justifyContent: 'center',
@@ -55,14 +54,6 @@ const addToCartStyles = {
   },
 }
 
-const actionButtonStyles = {
-  w: '50px',
-  h: '50px',
-  borderRadius: '50%',
-  bgColor: 'white',
-  marginRight: '10px',
-}
-
 const colorSwatchStyles = {
   borderRadius: '50%',
   border: '1px solid black',
@@ -83,9 +74,10 @@ function GoodsCard({ product }) {
     badgeColor,
     showColors,
     otherColors,
+    productImages,
   } = product
 
-  const { openProduct } = useProductView()
+  const { openProduct } = useProductActions()
   const [activeImage, setActiveImage] = useState(image)
 
   const badgeBg =
@@ -97,25 +89,27 @@ function GoodsCard({ product }) {
         display='flex'
         position='relative'
         width='100%'
-        h='250px'
+        h={{ base: '200px', sm: '220px', md: '250px' }}
         p='0'
         role='group'
       >
-        <Box sx={imageBoxStyles} onClick={() => openProduct(product)}>
+        <Box
+          sx={imageBoxStyles}
+          onClick={() => openProduct(product)}
+          onMouseEnter={() => preloadImages(productImages)}
+        >
           <Image
-            w='170px'
-            h='152px'
+            w={{ base: '120px', sm: '150px', md: '170px' }}
+            h={{ base: '110px', sm: '135px', md: '152px' }}
             objectFit='contain'
             src={activeImage}
             alt={name}
             zIndex='1'
+            decoding='async'
           />
         </Box>
 
-        <Button
-          sx={addToCartStyles}
-          top={showColors ? '83%' : '80%'}
-        >
+        <Button sx={addToCartStyles} bottom='0'>
           Add to Cart
         </Button>
 
@@ -143,25 +137,22 @@ function GoodsCard({ product }) {
             </Badge>
           )}
 
-          <VStack>
-            <Like />
-            <Button
-              sx={actionButtonStyles}
-              aria-label={`View ${name}`}
-              onClick={() => openProduct(product)}
-            >
-              <Image src={eye} alt='' />
-            </Button>
-          </VStack>
+          <Like />
         </Box>
       </CardBody>
 
       <CardFooter display='block' p='0' pb='15px'>
-        <Text mb='5px'>{name}</Text>
+        <Text mb='5px' fontSize={{ base: 'sm', md: 'md' }}>
+          {name}
+        </Text>
 
         <HStack mb='5px'>
-          <Text>{currentPrice}</Text>
-          {oldPrice && <Text as='s'>{oldPrice}</Text>}
+          <Text fontSize={{ base: 'sm', md: 'md' }}>{currentPrice}</Text>
+          {oldPrice && (
+            <Text as='s' fontSize={{ base: 'sm', md: 'md' }}>
+              {oldPrice}
+            </Text>
+          )}
         </HStack>
 
         <Rating rating={rating} />
@@ -185,4 +176,4 @@ function GoodsCard({ product }) {
   )
 }
 
-export default GoodsCard
+export default memo(GoodsCard)

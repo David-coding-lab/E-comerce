@@ -5,8 +5,9 @@ import { products } from '../data/products'
 import { getCategoryBySlug, slugToTitle } from '../data/categories'
 import BannerLinks from '../components/home/BannerLinks'
 import FlashSale from '../components/home/FlashSale'
-import JblBanner from '../components/home/JblBanner'
+import FlashProductBanner from '../components/home/FlashProductBanner'
 import SectionHeader from '../components/common/SectionHeader'
+import BackButton from '../components/common/BackButton'
 import ServiceHighlights from '../components/common/ServiceHighlights'
 
 function Category() {
@@ -16,6 +17,8 @@ function Category() {
 
   return (
     <Box marginInline={designSystem.defaultMargin}>
+      <BackButton mt='40px' />
+
       <BannerLinks />
 
       <SectionHeader badgeText='Category' title={title} />
@@ -26,6 +29,7 @@ function Category() {
           sectionTitle={`${title} Flash Sales`}
           allowNavigation
           products={products}
+          viewAllPath='/flash-sale'
         />
       </Box>
 
@@ -38,9 +42,10 @@ function Category() {
         products={products}
         width='190px'
         buttonContent='View All'
+        viewAllPath='/best-selling'
       />
 
-      <JblBanner />
+      <FlashProductBanner productId='jbl-boombox-3' />
 
       <ServiceHighlights />
     </Box>
