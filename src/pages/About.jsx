@@ -1,4 +1,4 @@
-import { Box, Container, Flex, HStack, Icon, IconButton, Image, Text, VStack, createIcon } from '@chakra-ui/react'
+import { Box, Container, Flex, HStack, Icon, IconButton, Image, Text, VStack } from '@chakra-ui/react'
 import aboutImg from '../assets/about image.png'
 import tomCruise from '../assets/Icons/tom.png'
 import emmaWatson from '../assets/Icons/emma.png'
@@ -6,10 +6,8 @@ import willSmit from '../assets/Icons/will.png'
 import twitter from '../assets/Icons/Icon-Twitter.png'
 import instagram from '../assets/Icons/icon-instagram.png'
 import linkedin from '../assets/Icons/Icon-Linkedin.png'
-import customerCare from '../assets/CustomerService.png'
-import deliveryCar from '../assets/delivery.png'
-import padlocGuard from '../assets/Secure.png'
-import { designSystem } from '../App'
+import ServiceHighlights from '../components/common/ServiceHighlights'
+import { designSystem } from '../styles/theme'
 function About() {
   const containerStyles = {
     maxW:'270px',
@@ -25,30 +23,8 @@ function About() {
       borderColor: 'none'
     }
   }
-  const footerParentBoxStyles ={
-    w:'70px',
-    display:'grid',
-    placeContent:'center',
-    borderRadius:'50%',
-    h:'70px',
-    bgColor:'rgba(47, 46, 48, 0.3)'
-}
-const footerChildBoxStyles = {
-    w:'50px',
-    p:'5px',
-    borderRadius:'50%',
-    bgColor:'black'
-}
-const foterTextStyles={
-    mt:'24px',
-    fontWeight:'semibold',
-    fontSize: designSystem.font1,
-    fontFamily:designSystem.font1
-}
-
-
   return (
-    <Box w='Flex' display='flex' flexDir='column' p='0' h='auto' mb='140px' ml={designSystem.defaultMargin}>
+    <Box w='100%' display='flex' flexDir='column' p='0' h='auto' mb='140px' ml={designSystem.defaultMargin}>
       <Flex pt='100px' h='auto'>
         <Box display='flex' flexDir='column' justifyContent='center' fontFamily={designSystem.font1}>
           <Text
@@ -57,20 +33,20 @@ const foterTextStyles={
             fontWeight='bold'
             mb='40px'
           >Our Story</Text>
-          <Text w='525px' mb='24px'>Launced in 2015, Exclusive is South Asia’s premier online shopping makterplace
-            with an active presense in Bangladesh. Supported by wide range of tailored marketing,
-            data and service solutions, Exclusive has 10,500 sallers and 300 brands and serves 3
-            millioons customers across the region.
+          <Text w='525px' mb='24px'>Launched in 2015, Exclusive is South Asia’s premier online shopping marketplace
+            with an active presence in Bangladesh. Supported by a wide range of tailored marketing,
+            data and service solutions, Exclusive has 10,500 sellers and 300 brands and serves 3
+            million customers across the region.
           </Text>
-          <Text w='525px'>Exclusive has more than 1 Million products to offer, growing at a very fast. Exclusive
-            offers a diverse assotment in categories ranging  from consumer.
+          <Text w='525px'>Exclusive has more than 1 million products to offer and is growing very fast.
+            Exclusive offers a diverse assortment of categories ranging from consumer goods.
           </Text>
         </Box>
       <Box w='705px' h='609px' ml='auto'>
         <Image src={aboutImg} />
       </Box>
       </Flex>
-      <Flex gap='30px' w='flex' h='260px' mt='140px' mr={designSystem.defaultMargin}>
+      <Flex gap='30px' w='100%' h='260px' mt='140px' mr={designSystem.defaultMargin}>
 
 
         <Container role='group' sx={containerStyles} >
@@ -88,7 +64,7 @@ const foterTextStyles={
           </IconButton>
           <VStack mt='24px' fontFamily={designSystem.font1}>
             <Text fontSize='25px' fontWeight='semibold'>10.5k</Text>
-            <Text>Sallers active our site</Text>
+            <Text>Sellers active on our site</Text>
           </VStack>
         </Container>
 
@@ -105,7 +81,7 @@ const foterTextStyles={
           </IconButton>
           <VStack mt='24px' fontFamily={designSystem.font1}>
             <Text fontSize='25px' fontWeight='semibold'>33k</Text>
-            <Text>Mopnthly Produduct Sale</Text>
+            <Text>Monthly Product Sale</Text>
           </VStack>
         </Container>
 
@@ -120,7 +96,7 @@ const foterTextStyles={
           </IconButton>
           <VStack mt='24px' fontFamily={designSystem.font1}>
             <Text fontSize='25px' fontWeight='semibold'>45.5k</Text>
-            <Text>Customer active in our site</Text>
+            <Text>Customers active on our site</Text>
           </VStack>
         </Container>
 
@@ -136,7 +112,7 @@ const foterTextStyles={
           </IconButton>
           <VStack mt='24px' fontFamily={designSystem.font1}>
             <Text fontSize='25px' fontWeight='semibold'>25k</Text>
-            <Text>Anual gross sale in our site</Text>
+            <Text>Annual gross sale on our site</Text>
           </VStack>
         </Container>
       </Flex>
@@ -153,8 +129,8 @@ const foterTextStyles={
         </Box>
         <Box w='370px' h='570px'>
           <Image src={emmaWatson}/>
-          <Text mt='32px' fontFamily={designSystem.font2} fontSize='20px' fontWeight='semibold'>Tom Cruise</Text>
-          <Text fontFamily={designSystem.font1} fontSize='15px'>Founder & Chairman</Text>
+          <Text mt='32px' fontFamily={designSystem.font2} fontSize='20px' fontWeight='semibold'>Emma Watson</Text>
+          <Text fontFamily={designSystem.font1} fontSize='15px'>Managing Director</Text>
           <HStack>
             <IconButton bgColor='transparent' _hover={{bgColor: 'none'}}><Image src={twitter} /></IconButton>
             <IconButton bgColor='transparent' _hover={{bgColor: 'none'}}><Image src={instagram} /></IconButton>
@@ -163,8 +139,8 @@ const foterTextStyles={
         </Box>
         <Box w='370px' h='570px'>
           <Image src={willSmit}/>
-          <Text mt='32px' fontFamily={designSystem.font2} fontSize='20px' fontWeight='semibold'>Tom Cruise</Text>
-          <Text fontFamily={designSystem.font1} fontSize='15px'>Founder & Chairman</Text>
+          <Text mt='32px' fontFamily={designSystem.font2} fontSize='20px' fontWeight='semibold'>Will Smith</Text>
+          <Text fontFamily={designSystem.font1} fontSize='15px'>Product Designer</Text>
           <HStack>
             <IconButton bgColor='transparent' _hover={{bgColor: 'none'}}><Image src={twitter} /></IconButton>
             <IconButton bgColor='transparent' _hover={{bgColor: 'none'}}><Image src={instagram} /></IconButton>
@@ -172,47 +148,7 @@ const foterTextStyles={
           </HStack>
         </Box>
       </Flex>
-      <Flex
-
-        mt='166px'
-        mr={designSystem.defaultMargin}
-        width='100'
-        pb='114px'
-        justifyContent='center'
-        alignItems='center'
-        gap='88px'
-        h='auto'
-        >
-            <Container centerContent='true'>
-                <Box sx={footerParentBoxStyles}>
-                    <Box sx={footerChildBoxStyles}>
-                        <Image src={deliveryCar} />
-                    </Box>
-                </Box>
-                <VStack>
-                    <Text sx={foterTextStyles}>FREE AND FAST DELIVERY</Text>
-                    <Text>Free delivery for all orders over $140</Text>
-                </VStack>
-            </Container>
-            <Container centerContent='true'>
-                <Box sx={footerParentBoxStyles}>
-                    <Box sx={footerChildBoxStyles}><Image src={customerCare}/></Box>
-                </Box>
-                <VStack>
-                    <Text sx={foterTextStyles}>24/7 CUSTOMER SERVICE</Text>
-                    <Text>Friendly 24/7 customer support</Text>
-                </VStack>
-            </Container>
-            <Container centerContent='true'>
-                <Box sx={footerParentBoxStyles}>
-                    <Box sx={footerChildBoxStyles}><Image src={padlocGuard}/></Box>
-                </Box>
-                <VStack>
-                    <Text sx={foterTextStyles}>MONEY BACK GUARANTEE</Text>
-                    <Text>We reurn money within 30 days</Text>
-                </VStack>
-            </Container>
-        </Flex>
+      <ServiceHighlights />
 
     </Box>
   )
