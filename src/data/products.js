@@ -19,6 +19,7 @@ import padSideView1 from '../assets/padsideView1.png'
 import padSideView2 from '../assets/padsideview2.png'
 import padSideView3 from '../assets/padsideview3.png'
 import padSideView4 from '../assets/padsideview4.png'
+import iphone from '../assets/iphone.png'
 
 export const products = [
   {
@@ -260,5 +261,17 @@ export const products = [
     productImages: [],
   },
 ]
+
+export const featuredProduct = {
+  id: 'iphone-14-series',
+  image: iphone,
+  name: 'iPhone 14 Series',
+  currentPrice: '$999',
+  oldPrice: '',
+  rating: 100,
+  showColors: false,
+  otherColors: [],
+  productImages: [iphone],
+}
 
 export default products

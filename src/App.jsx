@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/react'
 import { Route, Routes } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import Home from './pages/Home'
+import Category from './pages/Category'
 import Contact from './pages/Contact'
 import About from './pages/About'
 import SignUp from './pages/SignUp'
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path='category/:categorySlug' element={<Category />} />
           <Route path='contact' element={<Contact />} />
           <Route path='about' element={<About />} />
           <Route path='signup' element={<SignUp />} />
