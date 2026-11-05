@@ -52,6 +52,7 @@ function BannerLinks({
       flexDirection={{ base: 'column', lg: 'row' }}
       maxW='100%'
       w='100%'
+      mt={{ base: '24px', lg: '0' }}
       mb={{ base: '60px', md: '90px', lg: '140px' }}
       px='0'
       gap={{ base: '8px', lg: '0' }}

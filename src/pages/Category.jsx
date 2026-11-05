@@ -40,7 +40,7 @@ function Category() {
         sectionTitle={`Best Selling in ${title}`}
         allowNavigation={false}
         products={products}
-        width='190px'
+        width={{ base: 'auto', md: '190px' }}
         buttonContent='View All'
         viewAllPath='/best-selling'
       />

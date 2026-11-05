@@ -88,6 +88,7 @@ function FlashSale({
           badgeText={badgeText}
           title={sectionTitle}
           rightContent={rightContent}
+          stackOnMobile={allowNavigation}
         />
       </CardHeader>
 

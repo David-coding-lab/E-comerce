@@ -19,7 +19,13 @@ const barStyles = {
   bgColor: designSystem.secondary2,
 }
 
-function SectionHeader({ badgeText, title, rightContent, titleFontWeight = 'bold' }) {
+function SectionHeader({
+  badgeText,
+  title,
+  rightContent,
+  titleFontWeight = 'bold',
+  stackOnMobile = false,
+}) {
   return (
     <VStack align='stretch' justify='space-between' w='100%' h='auto' gap={{ base: '16px', md: '25px' }}>
       <Badge sx={badgeStyles}>
@@ -30,13 +36,14 @@ function SectionHeader({ badgeText, title, rightContent, titleFontWeight = 'bold
         fontFamily={designSystem.font2}
         fontWeight={titleFontWeight}
         align='center'
-        flexWrap='wrap'
-        gap={{ base: '16px', md: '0' }}
+        flexWrap={{ base: stackOnMobile ? 'wrap' : 'nowrap', md: 'nowrap' }}
+        gap={{ base: '12px', md: '0' }}
       >
         <Text
           fontSize={designSystem.headingSize2}
           marginRight={{ base: '0', lg: '87px' }}
-          w={{ base: '100%', md: 'auto' }}
+          w={{ base: stackOnMobile ? '100%' : 'auto', md: 'auto' }}
+          minW='0'
           as='h2'
         >
           {title}

@@ -67,7 +67,7 @@ function Home() {
           sectionTitle='Best Selling Products'
           allowNavigation={false}
           products={products}
-          width='190px'
+          width={{ base: 'auto', md: '190px' }}
           buttonContent='View All'
           viewAllPath='/best-selling'
         />
@@ -80,7 +80,7 @@ function Home() {
         sectionTitle='Explore Our Products'
         allowNavigation={false}
         buttonContent='View All Products'
-        width='200px'
+        width={{ base: 'auto', md: '200px' }}
         products={products}
         viewAllPath='/explore-products'
       />

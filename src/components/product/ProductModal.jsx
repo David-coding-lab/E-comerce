@@ -139,7 +139,7 @@ function ProductModal({ product }) {
           alignItems='center'
         >
           <Image
-            w={{ base: '60%', md: '50%' }}
+            w={{ base: '75%', sm: '60%', md: '50%' }}
             maxH='100%'
             objectFit='cover'
             src={currentImage}

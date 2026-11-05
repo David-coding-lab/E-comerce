@@ -16,20 +16,12 @@ import {
 import BackButton from '../components/common/BackButton'
 import { designSystem } from '../styles/theme'
 
-const contactCardStyles = {
-  w: '350px',
-  h: '460px',
-  boxShadow: '0 1px 13px rgba(0, 0, 0, 0.05)',
-  paddingInline: '35px',
-  paddingBlock: '40px',
-  fontFamily: designSystem.font1,
-}
-
 const iconButtonStyles = {
   w: '40px',
   h: '40px',
   bgColor: designSystem.secondary2,
   borderRadius: '50%',
+  flexShrink: 0,
 }
 
 const inputStyles = {
@@ -40,7 +32,7 @@ const inputStyles = {
 
 const sendButtonStyles = {
   bgColor: designSystem.secondary2,
-  w: '200px',
+  w: { base: '100%', sm: '200px' },
   h: '50px',
   color: 'white',
   borderRadius: '4px',
@@ -49,70 +41,103 @@ const sendButtonStyles = {
   },
 }
 
+const infoCardStyles = {
+  bgColor: designSystem.secondary,
+  borderRadius: '8px',
+  p: { base: '20px', md: '24px' },
+  h: '100%',
+}
+
+const infoHeadingStyles = {
+  fontWeight: 'semibold',
+  fontSize: designSystem.textSize1,
+}
+
 function Contact() {
   return (
     <Box marginInline={designSystem.defaultMargin}>
       <BackButton mt='40px' />
 
-      <Flex
-        w='100%'
-        h='70vh'
-        justifyContent='center'
-        alignItems='center'
-        mb='50px'
-      >
-        <Container sx={contactCardStyles}>
-        <Box>
-          <HStack mb='24px'>
-            <IconButton sx={iconButtonStyles} aria-label='Call us'>
-              <PhoneIcon color='white' />
-            </IconButton>
-            <Text>Call To Us</Text>
-          </HStack>
-          <Text mb='20px' fontSize='15px'>
-            We are available 24/7, 7 days a week.
-          </Text>
-          <Text fontSize='15px'>Phone: +234 7010885943</Text>
-        </Box>
+      <Flex justifyContent='center' py={{ base: '40px', md: '60px' }} mb='50px'>
+        <Container
+          maxW='780px'
+          w='100%'
+          bgColor='white'
+          boxShadow='0 8px 30px rgba(0, 0, 0, 0.08)'
+          borderRadius='12px'
+          px={{ base: '20px', sm: '32px', md: '48px' }}
+          py={{ base: '32px', md: '48px' }}
+          fontFamily={designSystem.font1}
+        >
+          <Box textAlign='center' mb={{ base: '28px', md: '36px' }}>
+            <Text
+              as='h1'
+              fontFamily={designSystem.font2}
+              fontSize={designSystem.headingSize1}
+              fontWeight='bold'
+            >
+              Contact Us
+            </Text>
+            <Text mt='8px' color='gray.600' fontSize={{ base: 'sm', md: 'md' }}>
+              We are here to help. Reach out to us anytime.
+            </Text>
+          </Box>
 
-        <Divider mt='20px' />
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+            <Box sx={infoCardStyles}>
+              <HStack mb='16px'>
+                <IconButton sx={iconButtonStyles} aria-label='Call us'>
+                  <PhoneIcon color='white' />
+                </IconButton>
+                <Text sx={infoHeadingStyles}>Call To Us</Text>
+              </HStack>
+              <Text mb='10px' fontSize='15px'>
+                We are available 24/7, 7 days a week.
+              </Text>
+              <Text fontSize='15px'>Phone: +234 7010885943</Text>
+            </Box>
 
-        <Box fontSize='16px'>
-          <HStack marginBlock='20px'>
-            <IconButton sx={iconButtonStyles} aria-label='Email us'>
-              <EmailIcon color='white' />
-            </IconButton>
-            <Text>Write To US</Text>
-          </HStack>
-          <Text mb='10px' lineHeight='30px'>
-            Fill out our form and we will contact you within 24 hours.
-          </Text>
-          <Text mb='10px'>Emails: emekad745@gmail.com</Text>
-          <Text>Emails: dave997996@gmail.com</Text>
-        </Box>
-      </Container>
+            <Box sx={infoCardStyles}>
+              <HStack mb='16px'>
+                <IconButton sx={iconButtonStyles} aria-label='Email us'>
+                  <EmailIcon color='white' />
+                </IconButton>
+                <Text sx={infoHeadingStyles}>Write To Us</Text>
+              </HStack>
+              <Text mb='10px' fontSize='15px'>
+                Fill out our form and we will contact you within 24 hours.
+              </Text>
+              <Text mb='6px' fontSize='15px'>
+                Emails: emekad745@gmail.com
+              </Text>
+              <Text fontSize='15px'>Emails: dave997996@gmail.com</Text>
+            </Box>
+          </SimpleGrid>
 
-        <SimpleGrid columns={3} spacing={4}>
-          <GridItem colSpan={1}>
-            <Input sx={inputStyles} placeholder='Your Name *' />
-          </GridItem>
-          <GridItem colSpan={1}>
-            <Input sx={inputStyles} placeholder='Your Email *' />
-          </GridItem>
-          <GridItem colSpan={1}>
-            <Input sx={inputStyles} placeholder='Your Phone *' />
-          </GridItem>
-          <GridItem colSpan={3}>
-            <Textarea
-              sx={inputStyles}
-              h='207px'
-              placeholder='Your Message'
-            />
-          </GridItem>
-          <GridItem colSpan={3} textAlign='right'>
-            <Button sx={sendButtonStyles}>Send Message</Button>
-          </GridItem>
-        </SimpleGrid>
+          <Divider my={{ base: '28px', md: '36px' }} />
+
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4}>
+            <GridItem colSpan={1}>
+              <Input sx={inputStyles} placeholder='Your Name *' />
+            </GridItem>
+            <GridItem colSpan={1}>
+              <Input sx={inputStyles} placeholder='Your Email *' />
+            </GridItem>
+            <GridItem colSpan={1}>
+              <Input sx={inputStyles} placeholder='Your Phone *' />
+            </GridItem>
+            <GridItem colSpan={{ base: 1, md: 3 }}>
+              <Textarea
+                sx={inputStyles}
+                h='207px'
+                placeholder='Your Message'
+              />
+            </GridItem>
+            <GridItem colSpan={{ base: 1, md: 3 }} textAlign='right'>
+              <Button sx={sendButtonStyles}>Send Message</Button>
+            </GridItem>
+          </SimpleGrid>
+        </Container>
       </Flex>
     </Box>
   )

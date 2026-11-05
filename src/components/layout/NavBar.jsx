@@ -38,8 +38,8 @@ function NavBar() {
   return (
     <Flex
       h={{ base: 'auto', lg: '94px' }}
-      py={{ base: '16px', lg: '0' }}
-      gap={{ base: '14px', lg: '0' }}
+      py={{ base: '20px', lg: '0' }}
+      gap={{ base: '24px', lg: '0' }}
       flexDirection={{ base: 'column', lg: 'row' }}
       bgColor='white'
       paddingInline={designSystem.defaultMargin}

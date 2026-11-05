@@ -32,7 +32,7 @@ function TopBanner() {
       h='auto'
       py={{ base: '8px', md: '0' }}
       bgColor='black'
-      display='flex'
+      display={{ base: 'none', md: 'flex' }}
       flexDirection={{ base: 'column', sm: 'row' }}
       gap={{ base: '4px', sm: '12px' }}
       justifyContent='space-between'

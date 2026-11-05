@@ -20,6 +20,7 @@ function ProductListing({
         badgeText={badgeText}
         title={title}
         rightContent={rightContent}
+        stackOnMobile={Boolean(rightContent)}
       />
 
       <SimpleGrid
