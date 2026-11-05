@@ -20,9 +20,9 @@ import PromoBanner from './PromoBanner'
 function DefaultBannerContent() {
   return (
     <>
-      <Flex alignItems='center' justifyContent='space-between' w='190px'>
+      <Flex alignItems='center' justifyContent='space-between' w='190px' maxW='100%'>
         <Image src={apple} alt='' />
-        <Text>iPhone 14 Series</Text>
+        <Text fontSize={{ base: 'sm', md: 'md' }}>iPhone 14 Series</Text>
       </Flex>
       <Text
         as='h1'
@@ -30,8 +30,8 @@ function DefaultBannerContent() {
         mb='22px'
         fontFamily={designSystem.font1}
         fontWeight='semibold'
-        letterSpacing='3px'
-        lineHeight='55px'
+        letterSpacing={{ base: '2px', md: '3px' }}
+        lineHeight={{ base: '34px', md: '44px', lg: '55px' }}
         fontSize={designSystem.headingSize1}
       >
         Up to 10% <br /> off Voucher
@@ -47,17 +47,32 @@ function BannerLinks({
   bannerProduct = featuredProduct,
 }) {
   return (
-    <Container display='flex' maxW='100vw' mb='140px'>
+    <Container
+      display='flex'
+      flexDirection={{ base: 'column', lg: 'row' }}
+      maxW='100%'
+      w='100%'
+      mb={{ base: '60px', md: '90px', lg: '140px' }}
+      px='0'
+      gap={{ base: '8px', lg: '0' }}
+    >
       <List
-        borderRight='1px solid'
-        width='217px'
+        borderRight={{ base: 'none', lg: '1px solid' }}
+        borderBottom={{ base: '1px solid', lg: 'none' }}
+        width={{ base: '100%', lg: '217px' }}
         fontFamily={designSystem.font1}
         fontWeight='normal'
-        pt='40px'
+        fontSize={{ base: 'sm', md: 'md' }}
+        pt={{ base: '0', lg: '40px' }}
+        pb={{ base: '12px', lg: '0' }}
         cursor='pointer'
+        display={{ base: 'flex', lg: 'block' }}
+        overflowX={{ base: 'auto', lg: 'visible' }}
+        gap='20px'
+        flexShrink='0'
       >
         {categories.map((category) => (
-          <ListItem key={category.slug} mt='16px'>
+          <ListItem key={category.slug} mt={{ base: '0', lg: '16px' }} flexShrink='0' whiteSpace='nowrap'>
             <Link
               as={RouterLink}
               to={`/category/${category.slug}`}

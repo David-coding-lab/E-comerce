@@ -91,12 +91,12 @@ function FlashSale({
         />
       </CardHeader>
 
-      <CardBody mt='50px' p='0'>
+      <CardBody mt={{ base: '30px', md: '50px' }} p='0'>
         <SimpleGrid
-          w={allowNavigation ? '90vw' : 'auto'}
-          columns={allowNavigation ? ITEMS_TO_SHOW : 4}
-          gridRowGap='30px'
-          gridColumnGap={allowNavigation ? '30px' : '65px'}
+          w='100%'
+          columns={{ base: 1, sm: 2, md: 2, lg: 3, xl: allowNavigation ? ITEMS_TO_SHOW : 4 }}
+          gridRowGap={{ base: '24px', md: '30px' }}
+          gridColumnGap={{ base: '16px', sm: '24px', xl: allowNavigation ? '30px' : '65px' }}
         >
           {visibleProducts.map((product) => (
             <GoodsCard key={product.id} product={product} />
@@ -105,9 +105,9 @@ function FlashSale({
       </CardBody>
 
       {allowNavigation && (
-        <CardFooter justifyContent='center' p='60px'>
+        <CardFooter justifyContent='center' p={{ base: '36px', md: '60px' }}>
           <CtaButtons
-            width='234px'
+            width={{ base: '100%', sm: '234px' }}
             buttonContent='View All Products'
             onClick={handleViewAll}
           />

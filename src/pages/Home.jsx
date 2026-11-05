@@ -1,4 +1,4 @@
-import { Box, Divider, Flex } from '@chakra-ui/react'
+import { Box, Divider, Grid } from '@chakra-ui/react'
 import { designSystem } from '../styles/theme'
 import { products } from '../data/products'
 import BannerLinks from '../components/home/BannerLinks'
@@ -39,12 +39,17 @@ function Home() {
         viewAllPath='/flash-sale'
       />
 
-      <Divider mb='70px' />
+      <Divider mb={{ base: '40px', md: '70px' }} />
 
-      <Box mt='80px'>
+      <Box mt={{ base: '48px', md: '80px' }}>
         <SectionHeader badgeText='Categories' title='Browse By Category' />
 
-        <Flex marginBlock='60px' gap='30px'>
+        <Grid
+          mt={{ base: '30px', md: '60px' }}
+          mb={{ base: '40px', md: '60px' }}
+          templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)', lg: 'repeat(6, 1fr)' }}
+          gap={{ base: '16px', md: '30px' }}
+        >
           {categories.map((category) => (
             <CategoryCard
               key={category.label}
@@ -53,9 +58,9 @@ function Home() {
               slug={category.slug}
             />
           ))}
-        </Flex>
+        </Grid>
 
-        <Divider mb='70px' />
+        <Divider mb={{ base: '40px', md: '70px' }} />
 
         <FlashSale
           badgeText='This Month'

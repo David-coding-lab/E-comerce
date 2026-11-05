@@ -5,26 +5,31 @@ import { useProductActions } from '../../context/productViewContext'
 const bannerStyles = {
   bgColor: '#000000',
   alignItems: 'center',
-  gap: '40px',
-  pl: '100px',
-  pr: '40px',
-  w: '80vw',
-  minH: '300px',
-  mt: '40px',
-  ml: '45px',
+  flexDirection: { base: 'column', md: 'row' },
+  gap: { base: '8px', md: '24px', lg: '40px' },
+  pl: { base: '24px', sm: '40px', md: '56px', lg: '100px' },
+  pr: { base: '24px', sm: '40px', md: '24px', lg: '40px' },
+  w: { base: '100%', lg: 'auto' },
+  flex: '1',
+  minW: '0',
+  minH: { base: 'auto', md: '300px' },
+  mt: { base: '24px', md: '40px' },
+  ml: { base: '0', lg: '45px' },
   overflow: 'hidden',
+  borderRadius: { base: '6px', lg: '0' },
 }
 
 const contentStyles = {
   color: 'white',
   flex: '1',
   minW: '0',
-  py: '32px',
+  py: { base: '24px', md: '32px' },
+  w: { base: '100%', md: 'auto' },
 }
 
 const imageBoxStyles = {
-  w: '400px',
-  h: '300px',
+  w: { base: '100%', md: '300px', lg: '400px' },
+  h: { base: '200px', sm: '240px', md: '300px' },
   flexShrink: 0,
   display: 'flex',
   alignItems: 'center',

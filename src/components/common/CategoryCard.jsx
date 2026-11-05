@@ -3,9 +3,11 @@ import { Link as RouterLink } from 'react-router-dom'
 import { designSystem } from '../../styles/theme'
 
 const containerStyles = {
-  maxW: '170px',
-  h: '150px',
-  gap: '16px',
+  w: '100%',
+  maxW: { base: '100%', md: '170px' },
+  h: { base: '110px', md: '150px' },
+  gap: { base: '10px', md: '16px' },
+  px: '8px',
   justifyContent: 'center',
   border: '1px solid',
   borderRadius: '4px',
@@ -33,12 +35,14 @@ function CategoryCard({ icon, label, slug, to }) {
       <Image
         src={icon}
         alt=''
-        w='56px'
-        h='56px'
+        w={{ base: '40px', md: '56px' }}
+        h={{ base: '40px', md: '56px' }}
         maxW='none'
         _groupHover={{ filter: 'invert(1)' }}
       />
-      <Text fontFamily={designSystem.font1}>{label}</Text>
+      <Text fontFamily={designSystem.font1} fontSize={{ base: 'sm', md: 'md' }} textAlign='center'>
+        {label}
+      </Text>
     </Container>
   )
 }

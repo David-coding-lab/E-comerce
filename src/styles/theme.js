@@ -1,16 +1,16 @@
 import { extendTheme } from '@chakra-ui/react'
 
 export const designSystem = {
-  headingSize1: '36px',
-  headingSize2: '28px',
-  textSize1: '16px',
-  textSize2: '12px',
+  headingSize1: { base: '24px', md: '30px', lg: '36px' },
+  headingSize2: { base: '20px', md: '24px', lg: '28px' },
+  textSize1: { base: '14px', md: '16px' },
+  textSize2: { base: '10px', md: '12px' },
   font1: 'Poppins',
   font2: 'Inter',
   secondary: '#F5F5F5',
   secondary2: '#DB4444',
   secondary3: '#00FF66',
-  defaultMargin: '135px',
+  defaultMargin: { base: '16px', sm: '24px', md: '40px', lg: '80px', xl: '135px' },
 }
 
 const theme = extendTheme({

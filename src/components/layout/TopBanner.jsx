@@ -28,20 +28,27 @@ function TopBanner() {
   return (
     <Container
       maxW='100vw'
-      h='48px'
+      minH='48px'
+      h='auto'
+      py={{ base: '8px', md: '0' }}
       bgColor='black'
       display='flex'
+      flexDirection={{ base: 'column', sm: 'row' }}
+      gap={{ base: '4px', sm: '12px' }}
       justifyContent='space-between'
       alignItems='center'
       paddingInline={designSystem.defaultMargin}
       color='white'
       fontFamily={designSystem.font1}
+      textAlign='center'
     >
-      <HStack>
-        <Text>
+      <HStack flexWrap='wrap' justifyContent='center' gap='4px'>
+        <Text fontSize={{ base: 'xs', md: 'sm' }}>
           Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
         </Text>
-        <Button sx={buttonStyles}>ShopNow</Button>
+        <Button sx={buttonStyles} fontSize={{ base: 'xs', md: 'sm' }} h='auto'>
+          ShopNow
+        </Button>
       </HStack>
 
       <Menu>

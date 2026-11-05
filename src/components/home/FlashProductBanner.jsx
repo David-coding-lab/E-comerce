@@ -19,8 +19,8 @@ const defaultCountdown = [
 ]
 
 const timerStyles = {
-  w: '67px',
-  h: '67px',
+  w: { base: '48px', md: '67px' },
+  h: { base: '48px', md: '67px' },
   borderRadius: '50%',
   display: 'grid',
   placeContent: 'center',
@@ -48,23 +48,30 @@ function FlashProductBanner({
   return (
     <Container
       display='flex'
-      mt='140px'
-      mb='71px'
+      flexDirection={{ base: 'column', md: 'row' }}
+      mt={{ base: '80px', md: '110px', lg: '140px' }}
+      mb={{ base: '48px', md: '71px' }}
       bgColor='#000000'
-      maxW='100vw'
-      h='420px'
+      maxW='100%'
+      w='100%'
+      h={{ base: 'auto', md: '420px' }}
+      py={{ base: '32px', md: '0' }}
+      px={{ base: '24px', sm: '40px', md: '0' }}
       alignItems='center'
       position='relative'
+      overflow='hidden'
       fontFamily={designSystem.font1}
     >
-      <Box ml='56px'>
-        <Text color={designSystem.secondary3}>{eyebrow}</Text>
+      <Box ml={{ base: '0', md: '56px' }} w={{ base: '100%', md: 'auto' }}>
+        <Text color={designSystem.secondary3} fontSize={{ base: 'sm', md: 'md' }}>
+          {eyebrow}
+        </Text>
         <Text
           as='h2'
           maxW='430px'
-          marginBlock='32px'
+          marginBlock={{ base: '20px', md: '32px' }}
           color='white'
-          letterSpacing='2px'
+          letterSpacing={{ base: '1px', md: '2px' }}
           fontFamily={designSystem.font2}
           fontSize={designSystem.headingSize1}
           fontWeight='bold'
@@ -72,10 +79,10 @@ function FlashProductBanner({
           {title}
         </Text>
 
-        <HStack fontFamily={designSystem.font1} gap='15px'>
+        <HStack fontFamily={designSystem.font1} gap={{ base: '8px', sm: '12px', md: '15px' }}>
           {countdown.map((timer) => (
             <Box key={timer.unit} sx={timerStyles}>
-              <Text textAlign='center' fontSize='12px' fontWeight='medium'>
+              <Text textAlign='center' fontSize={{ base: '9px', md: '12px' }} fontWeight='medium'>
                 {timer.value} <br /> {timer.unit}
               </Text>
             </Box>
@@ -84,9 +91,9 @@ function FlashProductBanner({
 
         <Button
           fontWeight='medium'
-          mt='40px'
-          w='171px'
-          h='56px'
+          mt={{ base: '24px', md: '40px' }}
+          w={{ base: '100%', sm: '171px' }}
+          h={{ base: '48px', md: '56px' }}
           bgColor={designSystem.secondary3}
           color='white'
           isDisabled={!product}
@@ -98,9 +105,10 @@ function FlashProductBanner({
       </Box>
 
       <Box
+        display={{ base: 'none', md: 'block' }}
         position='absolute'
-        w='460px'
-        h='460px'
+        w={{ md: '320px', lg: '460px' }}
+        h={{ md: '320px', lg: '460px' }}
         bgColor='#D9D9D9'
         opacity='20%'
         filter='blur(20px)'
@@ -110,10 +118,11 @@ function FlashProductBanner({
 
       <Image
         zIndex='1'
-        w='650px'
-        maxH='420px'
+        w={{ base: '100%', sm: '360px', md: '400px', lg: '650px' }}
+        maxH={{ base: '240px', md: '420px' }}
         objectFit='contain'
-        ml='auto'
+        mt={{ base: '24px', md: '0' }}
+        ml={{ base: '0', md: 'auto' }}
         src={bannerImage}
         alt={imageAlt ?? product?.name ?? ''}
       />

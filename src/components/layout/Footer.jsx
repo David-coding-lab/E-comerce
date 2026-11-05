@@ -40,15 +40,18 @@ function Footer() {
   return (
     <Grid
       w='100%'
-      height='450px'
+      height='auto'
+      minH={{ base: 'auto', lg: '450px' }}
+      py={{ base: '40px', md: '56px' }}
       bgColor='black'
-      gridTemplateColumns='repeat(5, 1fr)'
-      columnGap='87px'
+      gridTemplateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(5, 1fr)' }}
+      columnGap={{ base: '24px', md: '40px', lg: '48px', xl: '87px' }}
+      rowGap='40px'
       color='white'
-      placeContent='center'
+      alignItems='start'
       paddingInline={designSystem.defaultMargin}
     >
-      <GridItem w='250px'>
+      <GridItem w='100%'>
         <Text sx={textHeadingStyles}>Exclusive</Text>
         <Text fontWeight='semibold' fontSize='20px'>
           Subscribe
@@ -57,7 +60,8 @@ function Footer() {
         <Flex
           alignItems='center'
           mt='24px'
-          w='220px'
+          w='100%'
+          maxW='220px'
           p='5px'
           pr='10px'
           border='1px solid white'
@@ -66,12 +70,13 @@ function Footer() {
           <Input
             border='none'
             mr='auto'
-            width='130px'
+            width='100%'
+            minW='0'
             placeholder='Email here'
             value={footerEmail}
             onChange={(event) => setFooterEmail(event.target.value)}
           />
-          <EmailIcon />
+          <EmailIcon flexShrink='0' />
         </Flex>
       </GridItem>
 
@@ -81,7 +86,7 @@ function Footer() {
         <Text sx={textLinkStyles}>+234 7010885943</Text>
       </GridItem>
 
-      <GridItem w='150px'>
+      <GridItem w='100%'>
         <Text sx={textHeadingStyles}>Account</Text>
         {accountLinks.map((link) => (
           <Text key={link} sx={textLinkStyles}>
@@ -90,7 +95,7 @@ function Footer() {
         ))}
       </GridItem>
 
-      <GridItem w='150px'>
+      <GridItem w='100%'>
         <Text sx={textHeadingStyles}>Quick Links</Text>
         {quickLinks.map((link) => (
           <Text key={link} sx={textLinkStyles}>
@@ -99,12 +104,12 @@ function Footer() {
         ))}
       </GridItem>
 
-      <GridItem width='270px'>
+      <GridItem w='100%'>
         <Text sx={textHeadingStyles}>Download App</Text>
         <Text sx={textLinkStyles}>Save $3 with App New User Only</Text>
         <HStack mt='15px'>
           <Image src={qrCode} alt='QR code' />
-          <VStack>
+          <VStack alignItems='start'>
             <Image src={googlePlay} alt='Get it on Google Play' />
             <Image src={appleStore} alt='Download on the App Store' />
           </VStack>

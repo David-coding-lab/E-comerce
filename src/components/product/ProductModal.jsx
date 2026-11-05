@@ -34,19 +34,23 @@ const modalStyles = {
   position: 'fixed',
   zIndex: '10',
   backgroundColor: 'white',
-  w: '90vw',
-  p: '20px',
+  w: { base: 'calc(100vw - 24px)', lg: '90vw' },
+  maxW: '1200px',
+  maxH: '90vh',
+  overflowY: 'auto',
+  p: { base: '16px', md: '20px' },
   border: '1px solid rgba(0, 0, 0, 0.5)',
   borderRadius: '10px',
 }
 
 const thumbnailStyles = {
-  h: '160px',
-  w: '170px',
+  h: { base: '56px', md: '90px', lg: '160px' },
+  w: { base: '56px', md: '90px', lg: '170px' },
   display: 'grid',
   placeContent: 'center',
+  flexShrink: 0,
   cursor: 'pointer',
-  mb: '16px',
+  mb: { base: '0', xl: '16px' },
   bgColor: designSystem.secondary,
 }
 
@@ -92,8 +96,20 @@ function ProductModal({ product }) {
     <>
       <Box sx={overlayStyles} onClick={closeProduct} />
 
-      <Flex sx={modalStyles}>
-        <Container maxW='fit-content' m='0'>
+      <Flex
+        sx={modalStyles}
+        flexDirection={{ base: 'column', xl: 'row' }}
+        alignItems={{ base: 'stretch', xl: 'flex-start' }}
+      >
+        <Container
+          maxW='fit-content'
+          m='0'
+          p='0'
+          display={{ base: 'flex', xl: 'block' }}
+          gap='10px'
+          overflowX='auto'
+          flexShrink='0'
+        >
           {productImages.map((image, index) => (
             <Box
               key={image}
@@ -110,18 +126,34 @@ function ProductModal({ product }) {
         </Container>
 
         <Container
-          maxW='50vw'
-          h='700px'
+          flex='1'
+          minW='0'
+          maxW={{ base: '100%', xl: '50vw' }}
+          w={{ base: '100%', xl: 'auto' }}
+          h={{ base: '280px', md: '420px', xl: '700px' }}
           bgColor={designSystem.secondary}
-          ml='10px'
+          ml={{ base: '0', xl: '10px' }}
+          mt={{ base: '16px', xl: '0' }}
           display='flex'
           justifyContent='center'
           alignItems='center'
         >
-          <Image w='50%' objectFit='cover' src={currentImage} alt={name} />
+          <Image
+            w={{ base: '60%', md: '50%' }}
+            maxH='100%'
+            objectFit='cover'
+            src={currentImage}
+            alt={name}
+          />
         </Container>
 
-        <Box ml='70px'>
+        <Box
+          ml={{ base: '0', xl: '70px' }}
+          mt={{ base: '24px', xl: '0' }}
+          w={{ base: '100%', xl: 'auto' }}
+          flex='1'
+          minW='0'
+        >
           <Box>
             <Text fontSize={designSystem.headingSize1} fontWeight='semibold'>
               {name}
@@ -148,7 +180,7 @@ function ProductModal({ product }) {
           <Divider mt='24px' />
 
           <Box>
-            <HStack mt='24px' gap='24px'>
+            <HStack mt='24px' gap='24px' flexWrap='wrap'>
               <Text fontFamily={designSystem.font1}>Colors: </Text>
               <HStack>
                 <Box
@@ -167,7 +199,7 @@ function ProductModal({ product }) {
               </HStack>
             </HStack>
 
-            <HStack gap='24px' mt='30px'>
+            <HStack gap='24px' mt='30px' flexWrap='wrap'>
               <Text fontFamily={designSystem.font2} fontWeight='semibold'>
                 Size:{' '}
               </Text>
@@ -180,7 +212,7 @@ function ProductModal({ product }) {
               </HStack>
             </HStack>
 
-            <HStack mt='24px'>
+            <HStack mt='24px' gap='16px' flexWrap='wrap'>
               <Flex
                 w='160px'
                 h='44px'
@@ -223,7 +255,7 @@ function ProductModal({ product }) {
 
               <Button
                 bg={designSystem.secondary2}
-                w='150px'
+                w={{ base: '100%', sm: '150px' }}
                 borderRadius='4px'
                 color='white'
                 _hover={{ opacity: 0.8 }}
@@ -235,20 +267,22 @@ function ProductModal({ product }) {
             </HStack>
 
             <Container
-              width='420px'
+              width={{ base: '100%', lg: '420px' }}
+              maxW='420px'
               display='grid'
               placeContent='center'
-              h='180px'
+              h='auto'
+              minH='180px'
               border='1px solid rgba(0, 0, 0, 0.5)'
               fontFamily={designSystem.font1}
               fontSize='14px'
               gap='16px'
               m='0'
-              mt='40px'
-              p='0'
+              mt={{ base: '24px', lg: '40px' }}
+              p={{ base: '16px', lg: '0' }}
               borderRadius='4px'
             >
-              <HStack>
+              <HStack alignItems='flex-start'>
                 <Image src={fastDeliveryIcon} alt='' />
                 <Box>
                   <Text fontWeight='medium' fontSize='16px'>
@@ -262,7 +296,7 @@ function ProductModal({ product }) {
 
               <Divider />
 
-              <HStack>
+              <HStack alignItems='flex-start'>
                 <Image src={returnIcon} alt='' />
                 <Box>
                   <Text fontWeight='medium' fontSize='16px'>
@@ -275,7 +309,7 @@ function ProductModal({ product }) {
           </Box>
         </Box>
 
-        <CloseButton onClick={closeProduct} />
+        <CloseButton onClick={closeProduct} position='absolute' top='12px' right='12px' />
       </Flex>
     </>
   )

@@ -10,11 +10,11 @@ const units = [
 
 function Countdown() {
   return (
-    <HStack marginRight='auto' gap='17px'>
+    <HStack marginRight='auto' gap={{ base: '8px', md: '17px' }}>
       {units.map((unit, index) => (
-        <HStack key={unit.label} gap='17px'>
+        <HStack key={unit.label} gap={{ base: '8px', md: '17px' }}>
           {index > 0 && (
-            <Text mt='15px' fontSize={designSystem.headingSize2}>
+            <Text mt={{ base: '10px', md: '15px' }} fontSize={designSystem.headingSize2}>
               :
             </Text>
           )}

@@ -37,7 +37,10 @@ const iconButtonStyles = {
 function NavBar() {
   return (
     <Flex
-      h='94px'
+      h={{ base: 'auto', lg: '94px' }}
+      py={{ base: '16px', lg: '0' }}
+      gap={{ base: '14px', lg: '0' }}
+      flexDirection={{ base: 'column', lg: 'row' }}
       bgColor='white'
       paddingInline={designSystem.defaultMargin}
       justifyContent='center'
@@ -47,14 +50,21 @@ function NavBar() {
       <Text
         fontFamily={designSystem.font2}
         fontWeight='extrabold'
-        fontSize='24px'
-        marginRight='190px'
+        fontSize={{ base: '22px', md: '24px' }}
+        marginRight={{ base: '0', lg: '190px' }}
         as='h1'
       >
         Exclusive
       </Text>
 
-      <HStack gap='30px' w='450px' fontFamily={designSystem.font1}>
+      <HStack
+        gap={{ base: '18px', md: '30px' }}
+        w={{ base: '100%', lg: '450px' }}
+        justifyContent={{ base: 'center', lg: 'flex-start' }}
+        flexWrap='wrap'
+        fontFamily={designSystem.font1}
+        fontSize={{ base: 'sm', md: 'md' }}
+      >
         {navItems.map(({ to, label }) => (
           <NavLink key={to} to={to} end={to === '/'} style={{ textDecoration: 'none', color: 'inherit' }}>
             {({ isActive }) => (
@@ -70,22 +80,29 @@ function NavBar() {
         ))}
       </HStack>
 
-      <HStack marginLeft='148px'>
+      <HStack
+        marginLeft={{ base: '0', lg: '148px' }}
+        w={{ base: '100%', lg: 'auto' }}
+        justifyContent={{ base: 'center', lg: 'flex-end' }}
+      >
         <Flex
           bgColor={designSystem.secondary}
           borderRadius='4px'
           alignItems='center'
           padding='5px'
-          width='263px'
+          width={{ base: '100%', sm: '263px' }}
+          maxW='263px'
+          flex={{ base: '1', lg: 'none' }}
         >
           <Input
             bgColor='transparent'
             border='none'
             outline='transparent'
-            w='210px'
+            w='100%'
+            fontSize={{ base: 'sm', md: 'md' }}
             placeholder='What are you looking for'
           />
-          <SearchIcon cursor='pointer' marginLeft='10px' />
+          <SearchIcon cursor='pointer' marginLeft='10px' flexShrink='0' />
         </Flex>
 
         <Button sx={iconButtonStyles} aria-label='Wishlist'>

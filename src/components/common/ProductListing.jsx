@@ -23,10 +23,10 @@ function ProductListing({
       />
 
       <SimpleGrid
-        mt='50px'
-        columns={4}
-        gridRowGap='40px'
-        gridColumnGap='40px'
+        mt={{ base: '30px', md: '50px' }}
+        columns={{ base: 1, sm: 2, lg: 3, xl: 4 }}
+        gridRowGap={{ base: '24px', md: '40px' }}
+        gridColumnGap={{ base: '16px', md: '40px' }}
       >
         {productList.map((product) => (
           <GoodsCard key={product.id} product={product} />

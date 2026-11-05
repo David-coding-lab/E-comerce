@@ -48,15 +48,17 @@ const textStyles = {
 function ServiceHighlights() {
   return (
     <Flex
-      mt='166px'
-      pb='114px'
+      mt={{ base: '80px', md: '120px', lg: '166px' }}
+      pb={{ base: '60px', md: '90px', lg: '114px' }}
+      flexDirection={{ base: 'column', md: 'row' }}
       justifyContent='center'
       alignItems='center'
-      gap='88px'
+      gap={{ base: '40px', lg: '88px' }}
       h='auto'
+      textAlign='center'
     >
       {services.map((service) => (
-        <Container key={service.title} centerContent>
+        <Container key={service.title} centerContent w={{ base: '100%', md: 'auto' }}>
           <Box sx={parentBoxStyles}>
             <Box sx={childBoxStyles}>
               <Image src={service.icon} alt='' />
@@ -64,7 +66,7 @@ function ServiceHighlights() {
           </Box>
           <VStack>
             <Text sx={textStyles}>{service.title}</Text>
-            <Text>{service.description}</Text>
+            <Text fontSize={{ base: 'sm', md: 'md' }}>{service.description}</Text>
           </VStack>
         </Container>
       ))}

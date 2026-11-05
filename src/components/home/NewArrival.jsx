@@ -16,6 +16,7 @@ import { designSystem } from '../../styles/theme'
 const boxStyles = {
   bgColor: '#0D0D0D',
   position: 'relative',
+  overflow: 'hidden',
   transition: 'transform .3s ease-in-out, border-radius .3s ease-in-out',
   _hover: {
     borderRadius: '10px',
@@ -26,8 +27,8 @@ const boxStyles = {
 const detailsTextStyles = {
   fontFamily: designSystem.font1,
   fontWeight: 'light',
-  fontSize: '14px',
-  letterSpacing: '2px',
+  fontSize: { base: '12px', md: '14px' },
+  letterSpacing: { base: '1px', md: '2px' },
   color: 'white',
 }
 
@@ -51,20 +52,28 @@ const shopNowTextStyles = {
 
 const largeImageStyles = {
   position: 'absolute',
-  left: '50px',
-  top: '100px',
-  w: '500px',
+  left: { base: 'auto', lg: '50px' },
+  right: { base: '-20px', lg: 'auto' },
+  top: { base: '24px', lg: '100px' },
+  w: { base: '65%', sm: '55%', lg: '500px' },
 }
 
 const wideImageStyles = {
   position: 'absolute',
-  left: '167px',
+  left: { base: 'auto', lg: '167px' },
+  right: { base: '-16px', lg: 'auto' },
+  bottom: '0',
+  maxW: { base: '55%', lg: 'none' },
+  maxH: { base: '80%', lg: 'none' },
 }
 
 const smallImageStyles = {
   position: 'absolute',
-  top: '50px',
-  left: '40px',
+  top: { base: '20px', lg: '50px' },
+  left: { base: '50%', lg: '40px' },
+  transform: { base: 'translateX(-50%)', lg: 'none' },
+  w: { base: '110px', sm: '130px', lg: 'auto' },
+  maxW: { base: '70%', lg: 'none' },
 }
 
 function ArrivalContent({ item }) {
@@ -99,7 +108,7 @@ function NewArrival({
   }
 
   return (
-    <Card mt='80px' pb='30px' boxShadow='none'>
+    <Card mt={{ base: '48px', md: '80px' }} pb='30px' boxShadow='none'>
       <CardHeader p='0' mb='20px'>
         <SectionHeader
           badgeText={badgeText}
@@ -110,21 +119,22 @@ function NewArrival({
 
       <CardBody p='0'>
         <Grid
-          templateRows='repeat(2, 1fr)'
-          templateColumns='repeat(2, 1fr)'
+          templateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }}
+          templateRows={{ base: 'auto', lg: 'repeat(2, 1fr)' }}
           w='auto'
-          h='600px'
-          rowGap='24px'
-          columnGap='80px'
+          h={{ base: 'auto', lg: '600px' }}
+          rowGap={{ base: '16px', lg: '24px' }}
+          columnGap={{ base: '16px', md: '40px', xl: '80px' }}
         >
           <GridItem
-            rowSpan={2}
+            rowSpan={{ base: 1, lg: 2 }}
             colSpan={1}
             sx={boxStyles}
-            w='630px'
+            w='100%'
+            minH={{ base: '360px', sm: '420px', lg: 'auto' }}
             alignItems='end'
-            pl='32px'
-            pb='32px'
+            pl={{ base: '24px', lg: '32px' }}
+            pb={{ base: '24px', lg: '32px' }}
             display='flex'
             cursor='pointer'
           >
@@ -140,14 +150,14 @@ function NewArrival({
             <GridItem
               rowSpan={1}
               colSpan={1}
-              w='600px'
-              h='300px'
+              w='100%'
+              h={{ base: '240px', md: '300px' }}
               sx={boxStyles}
               display='flex'
               alignItems='end'
               cursor='pointer'
             >
-              <Box ml='24px' mb='24px'>
+              <Box ml={{ base: '20px', lg: '24px' }} mb={{ base: '20px', lg: '24px' }}>
                 <ArrivalContent item={wide} />
               </Box>
               <Image
@@ -158,11 +168,17 @@ function NewArrival({
             </GridItem>
           )}
 
-          <GridItem cursor='pointer' display='flex' gap='23px'>
+          <GridItem
+            cursor='pointer'
+            display='flex'
+            flexDirection={{ base: 'column', sm: 'row' }}
+            gap={{ base: '16px', lg: '23px' }}
+          >
             {smallItems.map((item) => (
               <Box
                 key={item.id}
-                w='290px'
+                w='100%'
+                h={{ base: '180px', lg: 'auto' }}
                 sx={boxStyles}
                 display='flex'
                 alignItems='end'
