@@ -75,8 +75,7 @@ function GoodsCard({ product }) {
     rating,
     hasBadge,
     badgeColor,
-    showColors,
-    otherColors,
+    colors = [],
     productImages,
   } = product
 
@@ -175,18 +174,24 @@ function GoodsCard({ product }) {
 
         <Rating rating={rating} />
 
-        {showColors && (
-          <Flex gap='20px'>
-            <Box
-              sx={colorSwatchStyles}
-              bgColor={designSystem.secondary2}
-              onClick={() => setActiveImage(image)}
-            />
-            <Box
-              sx={colorSwatchStyles}
-              bgColor={designSystem.secondary}
-              onClick={() => setActiveImage(otherColors[0])}
-            />
+        {colors.length > 0 && (
+          <Flex gap='20px' mt='10px'>
+            {colors.map((color) => (
+              <Box
+                key={color.name ?? color.image}
+                sx={{
+                  ...colorSwatchStyles,
+                  bgColor: color.value,
+                  boxShadow:
+                    activeImage === color.image
+                      ? `0 0 0 2px white, 0 0 0 4px ${designSystem.secondary2}`
+                      : 'none',
+                }}
+                title={color.name}
+                aria-label={color.name}
+                onClick={() => setActiveImage(color.image)}
+              />
+            ))}
           </Flex>
         )}
       </CardFooter>

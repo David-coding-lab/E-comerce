@@ -102,7 +102,7 @@ function ProductModal({ product }) {
   const sizes = getSizesForCategory(product.category)
   const [selectedSize, setSelectedSize] = useState(sizes[0] ?? null)
 
-  const { name, rating, currentPrice, otherColors, productImages } = product
+  const { name, rating, currentPrice, colors = [], productImages } = product
 
   const handleBuyNow = () => {
     closeProduct()
@@ -199,24 +199,29 @@ function ProductModal({ product }) {
           <Divider mt='24px' />
 
           <Box>
-            <HStack mt='24px' gap='24px' flexWrap='wrap'>
-              <Text fontFamily={designSystem.font1}>Colors: </Text>
-              <HStack>
-                <Box
-                  sx={colourSwatchStyles}
-                  bgColor={designSystem.secondary2}
-                  onClick={() => setCurrentImage(product.image)}
-                />
-                {otherColors.map((color) => (
-                  <Box
-                    key={color}
-                    sx={colourSwatchStyles}
-                    bgColor={designSystem.secondary}
-                    onClick={() => setCurrentImage(color)}
-                  />
-                ))}
+            {colors.length > 0 && (
+              <HStack mt='24px' gap='24px' flexWrap='wrap'>
+                <Text fontFamily={designSystem.font1}>Colors: </Text>
+                <HStack>
+                  {colors.map((color) => (
+                    <Box
+                      key={color.name ?? color.image}
+                      sx={{
+                        ...colourSwatchStyles,
+                        bgColor: color.value,
+                        boxShadow:
+                          currentImage === color.image
+                            ? `0 0 0 2px white, 0 0 0 4px ${designSystem.secondary2}`
+                            : 'none',
+                      }}
+                      title={color.name}
+                      aria-label={color.name}
+                      onClick={() => setCurrentImage(color.image)}
+                    />
+                  ))}
+                </HStack>
               </HStack>
-            </HStack>
+            )}
 
             {sizes.length > 0 && (
               <HStack gap='24px' mt='30px' flexWrap='wrap'>

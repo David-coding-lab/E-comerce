@@ -34,8 +34,10 @@ export const products = [
     currentPrice: '$120',
     oldPrice: '$160',
     rating: 88,
-    showColors: true,
-    otherColors: [gamePadWhite],
+    colors: [
+      { name: 'Red', value: '#DB4444', image: gamepadRed },
+      { name: 'White', value: '#FFFFFF', image: gamePadWhite },
+    ],
     productImages: [padSideView1, padSideView2, padSideView3, padSideView4],
   },
   {
@@ -49,8 +51,6 @@ export const products = [
     currentPrice: '$960',
     oldPrice: '$1160',
     rating: 75,
-    showColors: false,
-    otherColors: [],
     productImages: [],
   },
   {
@@ -64,8 +64,6 @@ export const products = [
     currentPrice: '$370',
     oldPrice: '$400',
     rating: 99,
-    showColors: false,
-    otherColors: [],
     productImages: [],
   },
   {
@@ -79,8 +77,6 @@ export const products = [
     currentPrice: '$375',
     oldPrice: '$400',
     rating: 99,
-    showColors: false,
-    otherColors: [],
     productImages: [],
   },
   {
@@ -94,8 +90,6 @@ export const products = [
     currentPrice: '$375',
     oldPrice: '$400',
     rating: 300,
-    showColors: false,
-    otherColors: [],
     productImages: [],
   },
   {
@@ -109,8 +103,10 @@ export const products = [
     currentPrice: '$260',
     oldPrice: '$360',
     rating: 65,
-    showColors: true,
-    otherColors: [greenJacket],
+    colors: [
+      { name: 'Pink', value: '#F2C4CF', image: pinkJacket },
+      { name: 'Green', value: '#6D8B5B', image: greenJacket },
+    ],
     productImages: [],
   },
   {
@@ -124,8 +120,6 @@ export const products = [
     currentPrice: '$960',
     oldPrice: '$1160',
     rating: 65,
-    showColors: false,
-    otherColors: [],
     productImages: [],
   },
   {
@@ -139,8 +133,6 @@ export const products = [
     currentPrice: '$160',
     oldPrice: '$170',
     rating: 65,
-    showColors: false,
-    otherColors: [],
     productImages: [],
   },
   {
@@ -154,8 +146,6 @@ export const products = [
     currentPrice: '$360',
     oldPrice: '$400',
     rating: 65,
-    showColors: false,
-    otherColors: [],
     productImages: [],
   },
   {
@@ -169,8 +159,6 @@ export const products = [
     currentPrice: '$100',
     oldPrice: '',
     rating: 300,
-    showColors: false,
-    otherColors: [],
     productImages: [],
   },
   {
@@ -184,8 +172,6 @@ export const products = [
     currentPrice: '$360',
     oldPrice: '',
     rating: 95,
-    showColors: false,
-    otherColors: [],
     productImages: [],
   },
   {
@@ -199,8 +185,6 @@ export const products = [
     currentPrice: '$700',
     oldPrice: '',
     rating: 325,
-    showColors: false,
-    otherColors: [],
     productImages: [],
   },
   {
@@ -214,8 +198,6 @@ export const products = [
     currentPrice: '$500',
     oldPrice: '',
     rating: 145,
-    showColors: false,
-    otherColors: [],
     productImages: [],
   },
   {
@@ -229,8 +211,6 @@ export const products = [
     currentPrice: '$960',
     oldPrice: '',
     rating: 65,
-    showColors: false,
-    otherColors: [],
     productImages: [],
   },
   {
@@ -244,8 +224,6 @@ export const products = [
     currentPrice: '$1160',
     oldPrice: '',
     rating: 35,
-    showColors: false,
-    otherColors: [],
     productImages: [],
   },
   {
@@ -259,8 +237,10 @@ export const products = [
     currentPrice: '$660',
     oldPrice: '',
     rating: 55,
-    showColors: false,
-    otherColors: [gamePadWhite],
+    colors: [
+      { name: 'Black', value: '#1F1F1F', image: gamePadBlack },
+      { name: 'White', value: '#FFFFFF', image: gamePadWhite },
+    ],
     productImages: [],
   },
   {
@@ -274,8 +254,10 @@ export const products = [
     currentPrice: '$660',
     oldPrice: '',
     rating: 55,
-    showColors: true,
-    otherColors: [pinkJacket],
+    colors: [
+      { name: 'Green', value: '#6D8B5B', image: greenJacket },
+      { name: 'Pink', value: '#F2C4CF', image: pinkJacket },
+    ],
     productImages: [],
   },
 ]
@@ -288,8 +270,6 @@ export const featuredProduct = {
   currentPrice: '$999',
   oldPrice: '',
   rating: 100,
-  showColors: false,
-  otherColors: [],
   productImages: [iphone],
 }
 
@@ -301,8 +281,6 @@ export const jblProduct = {
   currentPrice: '$299',
   oldPrice: '$349',
   rating: 95,
-  showColors: false,
-  otherColors: [],
   productImages: [jblImage],
 }
 
@@ -310,6 +288,10 @@ const productCatalog = [...products, featuredProduct, jblProduct]
 
 export function getProductById(id) {
   return productCatalog.find((product) => product.id === id)
+}
+
+export function getProductsByCategory(category) {
+  return productCatalog.filter((product) => product.category === category)
 }
 
 export default products

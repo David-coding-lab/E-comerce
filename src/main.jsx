@@ -6,6 +6,7 @@ import App from './App.jsx'
 import theme from './styles/theme'
 import { ProductViewProvider } from './context/ProductViewProvider'
 import { CartProvider } from './context/CartProvider'
+import { WishlistProvider } from './context/WishlistProvider'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -13,7 +14,9 @@ createRoot(document.getElementById('root')).render(
       <BrowserRouter>
         <ProductViewProvider>
           <CartProvider>
-            <App />
+            <WishlistProvider>
+              <App />
+            </WishlistProvider>
           </CartProvider>
         </ProductViewProvider>
       </BrowserRouter>
