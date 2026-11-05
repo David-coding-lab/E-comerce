@@ -1,4 +1,4 @@
-import { Box, Container, Flex, HStack, Icon, IconButton, Image, Text, VStack } from '@chakra-ui/react'
+import { Box, Container, Flex, Grid, HStack, Icon, IconButton, Image, Text, VStack } from '@chakra-ui/react'
 import aboutImg from '../assets/about image.png'
 import tomCruise from '../assets/Icons/tom.png'
 import emmaWatson from '../assets/Icons/emma.png'
@@ -11,45 +11,80 @@ import BackButton from '../components/common/BackButton'
 import { designSystem } from '../styles/theme'
 function About() {
   const containerStyles = {
-    maxW:'270px',
-    h:'230px',
+    maxW: '100%',
+    w: '100%',
+    h: 'auto',
+    minH: { base: '190px', md: '230px' },
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     flexDir: 'column',
-    border:'1px solid rgba(0, 0, 0, 0.3)',
+    px: '20px',
+    py: '24px',
+    textAlign: 'center',
+    border: '1px solid rgba(0, 0, 0, 0.3)',
     _hover: {
       bgColor: designSystem.secondary2,
       color: 'white',
-      borderColor: 'none'
-    }
+      borderColor: 'transparent',
+    },
   }
   return (
-    <Box w='100%' display='flex' flexDir='column' p='0' h='auto' mb='140px' ml={designSystem.defaultMargin}>
-      <BackButton mt='40px' mb='0' />
+    <Box
+      w='100%'
+      display='flex'
+      flexDir='column'
+      p='0'
+      h='auto'
+      mb={{ base: '80px', md: '140px' }}
+      paddingInline={designSystem.defaultMargin}
+    >
+      <BackButton mt='40px' mb='0' alignSelf='flex-start' />
 
-      <Flex pt='60px' h='auto'>
-        <Box display='flex' flexDir='column' justifyContent='center' fontFamily={designSystem.font1}>
+      <Flex
+        pt={{ base: '32px', md: '60px' }}
+        h='auto'
+        flexDirection={{ base: 'column', lg: 'row' }}
+        alignItems={{ base: 'stretch', lg: 'center' }}
+        gap={{ base: '32px', lg: '40px' }}
+      >
+        <Box
+          display='flex'
+          flexDir='column'
+          justifyContent='center'
+          fontFamily={designSystem.font1}
+          w={{ base: '100%', lg: '50%' }}
+        >
           <Text
             fontFamily={designSystem.font2}
             fontSize={designSystem.headingSize1}
             fontWeight='bold'
-            mb='40px'
+            mb={{ base: '20px', md: '40px' }}
           >Our Story</Text>
-          <Text w='525px' mb='24px'>Launched in 2015, Exclusive is South Asia’s premier online shopping marketplace
+          <Text mb='24px' fontSize={{ base: 'sm', md: 'md' }}>Launched in 2015, Exclusive is South Asia’s premier online shopping marketplace
             with an active presence in Bangladesh. Supported by a wide range of tailored marketing,
             data and service solutions, Exclusive has 10,500 sellers and 300 brands and serves 3
             million customers across the region.
           </Text>
-          <Text w='525px'>Exclusive has more than 1 million products to offer and is growing very fast.
+          <Text fontSize={{ base: 'sm', md: 'md' }}>Exclusive has more than 1 million products to offer and is growing very fast.
             Exclusive offers a diverse assortment of categories ranging from consumer goods.
           </Text>
         </Box>
-      <Box w='705px' h='609px' ml='auto'>
-        <Image src={aboutImg} />
-      </Box>
+        <Box
+          w={{ base: '100%', lg: '50%' }}
+          maxW='705px'
+          h='auto'
+          ml={{ base: '0', lg: 'auto' }}
+        >
+          <Image src={aboutImg} w='100%' h='auto' objectFit='cover' />
+        </Box>
       </Flex>
-      <Flex gap='30px' w='100%' h='260px' mt='140px' mr={designSystem.defaultMargin}>
+      <Grid
+        templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
+        gap={{ base: '20px', md: '30px' }}
+        w='100%'
+        mt={{ base: '60px', md: '100px', lg: '140px' }}
+      >
 
 
         <Container role='group' sx={containerStyles} >
@@ -118,10 +153,16 @@ function About() {
             <Text>Annual gross sale on our site</Text>
           </VStack>
         </Container>
-      </Flex>
-      <Flex mt='140px' gap='30px' h='auto' justifyContent='center' mr={designSystem.defaultMargin}>
-        <Box w='370px' h='570px'>
-          <Image src={tomCruise}/>
+      </Grid>
+      <Grid
+        templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}
+        gap={{ base: '24px', md: '30px' }}
+        mt={{ base: '60px', md: '100px', lg: '140px' }}
+        w='100%'
+        justifyContent='center'
+      >
+        <Box w='100%' maxW='370px' h='auto' mx='auto'>
+          <Image src={tomCruise} w='100%' h='auto' />
           <Text mt='32px' fontFamily={designSystem.font2} fontSize='20px' fontWeight='semibold'>Tom Cruise</Text>
           <Text fontFamily={designSystem.font1} fontSize='15px'>Founder & Chairman</Text>
           <HStack>
@@ -130,8 +171,8 @@ function About() {
             <IconButton bgColor='transparent' _hover={{bgColor: 'none'}}><Image src={linkedin} /></IconButton>
           </HStack>
         </Box>
-        <Box w='370px' h='570px'>
-          <Image src={emmaWatson}/>
+        <Box w='100%' maxW='370px' h='auto' mx='auto'>
+          <Image src={emmaWatson} w='100%' h='auto' />
           <Text mt='32px' fontFamily={designSystem.font2} fontSize='20px' fontWeight='semibold'>Emma Watson</Text>
           <Text fontFamily={designSystem.font1} fontSize='15px'>Managing Director</Text>
           <HStack>
@@ -140,8 +181,8 @@ function About() {
             <IconButton bgColor='transparent' _hover={{bgColor: 'none'}}><Image src={linkedin} /></IconButton>
           </HStack>
         </Box>
-        <Box w='370px' h='570px'>
-          <Image src={willSmit}/>
+        <Box w='100%' maxW='370px' h='auto' mx='auto'>
+          <Image src={willSmit} w='100%' h='auto' />
           <Text mt='32px' fontFamily={designSystem.font2} fontSize='20px' fontWeight='semibold'>Will Smith</Text>
           <Text fontFamily={designSystem.font1} fontSize='15px'>Product Designer</Text>
           <HStack>
@@ -150,7 +191,7 @@ function About() {
             <IconButton bgColor='transparent' _hover={{bgColor: 'none'}}><Image src={linkedin} /></IconButton>
           </HStack>
         </Box>
-      </Flex>
+      </Grid>
       <ServiceHighlights />
 
     </Box>

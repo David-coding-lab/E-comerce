@@ -10,10 +10,12 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Rating from '../common/Rating'
 import Like from '../common/Like'
 import { designSystem } from '../../styles/theme'
 import { useProductActions } from '../../context/productViewContext'
+import { getSizesForCategory } from '../../data/categories'
 import fastDeliveryIcon from '../../assets/Icons/icon-delivery.png'
 import returnIcon from '../../assets/Icons/Icon-return.png'
 
@@ -63,17 +65,26 @@ const colourSwatchStyles = {
 }
 
 const sizeBoxStyles = {
-  w: '32px',
+  minW: '32px',
   h: '32px',
+  px: '6px',
   border: '1px solid rgba(0, 0, 0, 0.5)',
   display: 'grid',
   placeContent: 'center',
   borderRadius: '4px',
+  cursor: 'pointer',
+  transition: 'background-color .2s ease, color .2s ease',
   _hover: {
     backgroundColor: designSystem.secondary2,
     borderColor: designSystem.secondary2,
     color: 'white',
   },
+}
+
+const selectedSizeStyles = {
+  backgroundColor: designSystem.secondary2,
+  borderColor: designSystem.secondary2,
+  color: 'white',
 }
 
 const quantityBoxStyles = {
@@ -83,14 +94,22 @@ const quantityBoxStyles = {
   bgColor: 'none',
 }
 
-const sizes = ['XS', 'S', 'M', 'L', 'XL']
-
 function ProductModal({ product }) {
+  const navigate = useNavigate()
   const { closeProduct } = useProductActions()
   const [currentImage, setCurrentImage] = useState(product.image)
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
+  const sizes = getSizesForCategory(product.category)
+  const [selectedSize, setSelectedSize] = useState(sizes[0] ?? null)
 
   const { name, rating, currentPrice, otherColors, productImages } = product
+
+  const handleBuyNow = () => {
+    closeProduct()
+    navigate('/checkout', {
+      state: { product, quantity, size: selectedSize },
+    })
+  }
 
   return (
     <>
@@ -199,18 +218,29 @@ function ProductModal({ product }) {
               </HStack>
             </HStack>
 
-            <HStack gap='24px' mt='30px' flexWrap='wrap'>
-              <Text fontFamily={designSystem.font2} fontWeight='semibold'>
-                Size:{' '}
-              </Text>
-              <HStack>
-                {sizes.map((size) => (
-                  <Box key={size} sx={sizeBoxStyles}>
-                    {size}
-                  </Box>
-                ))}
+            {sizes.length > 0 && (
+              <HStack gap='24px' mt='30px' flexWrap='wrap'>
+                <Text fontFamily={designSystem.font2} fontWeight='semibold'>
+                  Size:{' '}
+                </Text>
+                <HStack gap='8px' flexWrap='wrap'>
+                  {sizes.map((size) => (
+                    <Box
+                      key={size}
+                      role='button'
+                      aria-pressed={selectedSize === size}
+                      sx={{
+                        ...sizeBoxStyles,
+                        ...(selectedSize === size ? selectedSizeStyles : {}),
+                      }}
+                      onClick={() => setSelectedSize(size)}
+                    >
+                      {size}
+                    </Box>
+                  ))}
+                </HStack>
               </HStack>
-            </HStack>
+            )}
 
             <HStack mt='24px' gap='16px' flexWrap='wrap'>
               <Flex
@@ -225,7 +255,7 @@ function ProductModal({ product }) {
                   pt='3px'
                   sx={quantityBoxStyles}
                   onClick={() =>
-                    setQuantity((prevQuantity) => Math.max(0, prevQuantity - 1))
+                    setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1))
                   }
                 >
                   _
@@ -259,6 +289,7 @@ function ProductModal({ product }) {
                 borderRadius='4px'
                 color='white'
                 _hover={{ opacity: 0.8 }}
+                onClick={handleBuyNow}
               >
                 Buy Now
               </Button>

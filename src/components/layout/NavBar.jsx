@@ -13,7 +13,7 @@ import cart from '../../assets/Icons/Cart1.png'
 import { designSystem } from '../../styles/theme'
 
 const navItems = [
-  { to: '/', label: 'Home' },
+  { to: '/', label: 'Shop' },
   { to: '/contact', label: 'Contact' },
   { to: '/about', label: 'About' },
   { to: '/signup', label: 'Sign Up' },

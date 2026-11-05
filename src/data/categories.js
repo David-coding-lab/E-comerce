@@ -21,4 +21,14 @@ export function slugToTitle(slug) {
     .join(' ')
 }
 
+const sizesByCategory = {
+  'womans-fashion': ['XS', 'S', 'M', 'L', 'XL'],
+  'mens-fashion': ['XS', 'S', 'M', 'L', 'XL'],
+  'sports-outdoor': ['6', '7', '8', '9', '10', '11'],
+}
+
+export function getSizesForCategory(category) {
+  return sizesByCategory[category] ?? []
+}
+
 export default categories

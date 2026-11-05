@@ -55,8 +55,10 @@ const infoHeadingStyles = {
 
 function Contact() {
   return (
-    <Box marginInline={designSystem.defaultMargin}>
-      <BackButton mt='40px' />
+    <Box paddingInline={designSystem.defaultMargin}>
+      <Box maxW='780px' w='100%' mx='auto'>
+        <BackButton mt='40px' />
+      </Box>
 
       <Flex justifyContent='center' py={{ base: '40px', md: '60px' }} mb='50px'>
         <Container

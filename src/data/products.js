@@ -25,6 +25,7 @@ import jblImage from '../assets/jblimage.png'
 export const products = [
   {
     id: 'havit-hv-g92-gamepad',
+    category: 'gaming',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -39,6 +40,7 @@ export const products = [
   },
   {
     id: 'ak-900-wired-keyboard',
+    category: 'computers',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -53,6 +55,7 @@ export const products = [
   },
   {
     id: 'ips-lcd-gaming-monitor',
+    category: 'computers',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -67,6 +70,7 @@ export const products = [
   },
   {
     id: 's-series-comfort-chair-1',
+    category: 'home-lifestyle',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -81,6 +85,7 @@ export const products = [
   },
   {
     id: 's-series-comfort-chair-2',
+    category: 'home-lifestyle',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -95,6 +100,7 @@ export const products = [
   },
   {
     id: 'the-north-coat',
+    category: 'womans-fashion',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -109,6 +115,7 @@ export const products = [
   },
   {
     id: 'gucci-duffle-bag',
+    category: 'womans-fashion',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -123,6 +130,7 @@ export const products = [
   },
   {
     id: 'rgb-liquid-cpu-cooler',
+    category: 'computers',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -137,6 +145,7 @@ export const products = [
   },
   {
     id: 'small-bookshelf',
+    category: 'home-lifestyle',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -151,6 +160,7 @@ export const products = [
   },
   {
     id: 'breed-dry-dog-food',
+    category: 'groceries-pets',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -165,6 +175,7 @@ export const products = [
   },
   {
     id: 'canon-eos-dslr-camera',
+    category: 'camera',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -179,6 +190,7 @@ export const products = [
   },
   {
     id: 'asus-fhd-gaming-laptop',
+    category: 'computers',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -193,6 +205,7 @@ export const products = [
   },
   {
     id: 'curology-product-set',
+    category: 'health-beauty',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -207,6 +220,7 @@ export const products = [
   },
   {
     id: 'kids-electric-car',
+    category: 'babys-toys',
     hasBadge: true,
     badgeColor: 'green',
     discountPercent: '-40%',
@@ -221,6 +235,7 @@ export const products = [
   },
   {
     id: 'jr-zoom-soccer-cleats',
+    category: 'sports-outdoor',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -235,6 +250,7 @@ export const products = [
   },
   {
     id: 'gp11-shooter-usb-gamepad',
+    category: 'gaming',
     hasBadge: true,
     badgeColor: 'green',
     discountPercent: '-40%',
@@ -249,6 +265,7 @@ export const products = [
   },
   {
     id: 'quilted-satin-jacket',
+    category: 'mens-fashion',
     hasBadge: true,
     badgeColor: 'red',
     discountPercent: '-40%',
@@ -265,6 +282,7 @@ export const products = [
 
 export const featuredProduct = {
   id: 'iphone-14-series',
+  category: 'phones',
   image: iphone,
   name: 'iPhone 14 Series',
   currentPrice: '$999',
@@ -277,6 +295,7 @@ export const featuredProduct = {
 
 export const jblProduct = {
   id: 'jbl-boombox-3',
+  category: 'electronics',
   image: jblImage,
   name: 'JBL Boombox 3 Portable Speaker',
   currentPrice: '$299',
