@@ -9,6 +9,7 @@ import {
   Input,
   Radio,
   RadioGroup,
+  Select,
   SimpleGrid,
   Text,
   Textarea,
@@ -18,7 +19,9 @@ import { useLocation } from 'react-router-dom'
 import BackButton from '../components/common/BackButton'
 import { getSizesForCategory } from '../data/categories'
 import { products } from '../data/products'
+import { useCart } from '../context/cartContext'
 import { designSystem } from '../styles/theme'
+import { formatPrice, parsePrice } from '../utils/price'
 
 const inputStyles = {
   bgColor: designSystem.secondary,
@@ -53,23 +56,22 @@ const paymentMethods = [
   },
 ]
 
-function parsePrice(price) {
-  return Number(String(price).replace(/[^0-9.]/g, '')) || 0
-}
-
-function formatPrice(amount) {
-  return `$${amount.toFixed(2)}`
-}
-
-function getOrderItems(locationState) {
+function getOrderItems(locationState, cartItems) {
   if (locationState?.product) {
     return [
       {
         product: locationState.product,
         quantity: Math.max(1, locationState.quantity ?? 1),
-        size: locationState.size ?? null,
+        size:
+          locationState.size ??
+          getSizesForCategory(locationState.product.category)[0] ??
+          null,
       },
     ]
+  }
+
+  if (cartItems.length > 0) {
+    return cartItems
   }
 
   return [products[0], products[5]].map((product) => ({
@@ -79,12 +81,9 @@ function getOrderItems(locationState) {
   }))
 }
 
-function OrderItem({ item }) {
+function OrderItem({ item, sizes, onSizeChange }) {
   const { product, quantity, size } = item
   const lineTotal = parsePrice(product.currentPrice) * quantity
-  const details = [size ? `Size: ${size}` : null, `Qty: ${quantity}`]
-    .filter(Boolean)
-    .join(' · ')
 
   return (
     <HStack align='flex-start' spacing='16px'>
@@ -102,9 +101,36 @@ function OrderItem({ item }) {
         <Text fontWeight='medium' noOfLines={2}>
           {product.name}
         </Text>
-        <Text fontSize='sm' color='gray.500'>
-          {details}
-        </Text>
+        <HStack mt='8px' spacing='12px' flexWrap='wrap' rowGap='8px'>
+          {sizes.length > 0 && (
+            <HStack spacing='8px'>
+              <Text fontSize='sm' color='gray.500'>
+                Size
+              </Text>
+              <Select
+                size='sm'
+                w='auto'
+                minW='76px'
+                value={size ?? sizes[0]}
+                aria-label={`Size for ${product.name}`}
+                bgColor={designSystem.secondary}
+                border='none'
+                borderRadius='4px'
+                fontSize='sm'
+                onChange={(event) => onSizeChange(event.target.value)}
+              >
+                {sizes.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </Select>
+            </HStack>
+          )}
+          <Text fontSize='sm' color='gray.500'>
+            Qty: {quantity}
+          </Text>
+        </HStack>
       </Box>
       <Text fontWeight='semibold' whiteSpace='nowrap'>
         {formatPrice(lineTotal)}
@@ -115,9 +141,31 @@ function OrderItem({ item }) {
 
 function Checkout() {
   const location = useLocation()
+  const { items: cartItems, updateSize } = useCart()
   const [paymentMethod, setPaymentMethod] = useState('card')
+  const [localSizes, setLocalSizes] = useState({})
 
-  const items = getOrderItems(location.state)
+  const items = getOrderItems(location.state, cartItems).map((item) => {
+    if (item.key) {
+      return item
+    }
+
+    const overriddenSize = localSizes[item.product.id]
+
+    return overriddenSize ? { ...item, size: overriddenSize } : item
+  })
+
+  const handleSizeChange = (item, size) => {
+    if (item.key) {
+      updateSize(item.key, size)
+      return
+    }
+
+    setLocalSizes((previousSizes) => ({
+      ...previousSizes,
+      [item.product.id]: size,
+    }))
+  }
   const subtotal = items.reduce(
     (total, item) => total + parsePrice(item.product.currentPrice) * item.quantity,
     0,
@@ -236,7 +284,12 @@ function Checkout() {
 
             <VStack align='stretch' spacing='16px' divider={<Divider />}>
               {items.map((item) => (
-                <OrderItem key={item.product.id} item={item} />
+                <OrderItem
+                  key={item.key ?? item.product.id}
+                  item={item}
+                  sizes={getSizesForCategory(item.product.category)}
+                  onSizeChange={(size) => handleSizeChange(item, size)}
+                />
               ))}
             </VStack>
 

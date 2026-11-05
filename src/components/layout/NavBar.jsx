@@ -1,5 +1,7 @@
 import { SearchIcon } from '@chakra-ui/icons'
 import {
+  Badge,
+  Box,
   Button,
   Flex,
   HStack,
@@ -7,10 +9,11 @@ import {
   Input,
   Text,
 } from '@chakra-ui/react'
-import { NavLink } from 'react-router-dom'
+import { Link as RouterLink, NavLink } from 'react-router-dom'
 import wishList from '../../assets/Icons/Wishlist.png'
 import cart from '../../assets/Icons/Cart1.png'
 import { designSystem } from '../../styles/theme'
+import { useCart } from '../../context/cartContext'
 
 const navItems = [
   { to: '/', label: 'Shop' },
@@ -35,6 +38,8 @@ const iconButtonStyles = {
 }
 
 function NavBar() {
+  const { itemCount } = useCart()
+
   return (
     <Flex
       h={{ base: 'auto', lg: '94px' }}
@@ -108,9 +113,35 @@ function NavBar() {
         <Button sx={iconButtonStyles} aria-label='Wishlist'>
           <Image src={wishList} alt='' />
         </Button>
-        <Button sx={iconButtonStyles} aria-label='Cart'>
-          <Image src={cart} alt='' />
-        </Button>
+        <Box position='relative'>
+          <Button
+            as={RouterLink}
+            to='/cart'
+            sx={iconButtonStyles}
+            aria-label='Cart'
+          >
+            <Image src={cart} alt='' />
+          </Button>
+          {itemCount > 0 && (
+            <Badge
+              position='absolute'
+              top='0'
+              right='0'
+              minW='18px'
+              h='18px'
+              px='4px'
+              display='grid'
+              placeContent='center'
+              borderRadius='full'
+              bgColor={designSystem.secondary2}
+              color='white'
+              fontSize='10px'
+              pointerEvents='none'
+            >
+              {itemCount}
+            </Badge>
+          )}
+        </Box>
       </HStack>
     </Flex>
   )

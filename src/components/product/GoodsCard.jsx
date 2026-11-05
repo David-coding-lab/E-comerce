@@ -9,12 +9,15 @@ import {
   HStack,
   Image,
   Text,
+  useToast,
 } from '@chakra-ui/react'
 import { memo, useState } from 'react'
 import Rating from '../common/Rating'
 import Like from '../common/Like'
 import { designSystem } from '../../styles/theme'
 import { useProductActions } from '../../context/productViewContext'
+import { useCartActions } from '../../context/cartContext'
+import { getSizesForCategory } from '../../data/categories'
 import { preloadImages } from '../../utils/preloadImages'
 
 const cardStyles = {
@@ -78,10 +81,25 @@ function GoodsCard({ product }) {
   } = product
 
   const { openProduct } = useProductActions()
+  const { addItem } = useCartActions()
+  const toast = useToast()
   const [activeImage, setActiveImage] = useState(image)
 
   const badgeBg =
     badgeColor === 'red' ? designSystem.secondary2 : designSystem.secondary3
+
+  const handleAddToCart = () => {
+    const size = getSizesForCategory(product.category)[0] ?? null
+    addItem(product, 1, size)
+    toast({
+      title: 'Added to cart',
+      description: `${name} was added to your cart.`,
+      status: 'success',
+      duration: 2000,
+      isClosable: true,
+      position: 'top-right',
+    })
+  }
 
   return (
     <Card sx={cardStyles}>
@@ -109,7 +127,7 @@ function GoodsCard({ product }) {
           />
         </Box>
 
-        <Button sx={addToCartStyles} bottom='0'>
+        <Button sx={addToCartStyles} bottom='0' onClick={handleAddToCart}>
           Add to Cart
         </Button>
 
