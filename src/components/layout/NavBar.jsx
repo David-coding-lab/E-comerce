@@ -5,15 +5,22 @@ import {
   Button,
   Flex,
   HStack,
+  IconButton,
   Image,
   Input,
   Text,
 } from '@chakra-ui/react'
-import { Link as RouterLink, NavLink } from 'react-router-dom'
+import { useState } from 'react'
+import {
+  Link as RouterLink,
+  NavLink,
+  useNavigate,
+} from 'react-router-dom'
 import wishList from '../../assets/Icons/Wishlist.png'
 import cart from '../../assets/Icons/Cart1.png'
 import { designSystem } from '../../styles/theme'
 import { useCart } from '../../context/cartContext'
+import { useWishlistCount } from '../../context/wishlistContext'
 
 const navItems = [
   { to: '/', label: 'Shop' },
@@ -39,6 +46,18 @@ const iconButtonStyles = {
 
 function NavBar() {
   const { itemCount } = useCart()
+  const wishlistCount = useWishlistCount()
+  const navigate = useNavigate()
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const handleSearch = (event) => {
+    event.preventDefault()
+    const query = searchTerm.trim()
+
+    if (query) {
+      navigate(`/search?q=${encodeURIComponent(query)}`)
+    }
+  }
 
   return (
     <Flex
@@ -91,6 +110,8 @@ function NavBar() {
         justifyContent={{ base: 'center', lg: 'flex-end' }}
       >
         <Flex
+          as='form'
+          onSubmit={handleSearch}
           bgColor={designSystem.secondary}
           borderRadius='4px'
           alignItems='center'
@@ -106,13 +127,53 @@ function NavBar() {
             w='100%'
             fontSize={{ base: 'sm', md: 'md' }}
             placeholder='What are you looking for'
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
           />
-          <SearchIcon cursor='pointer' marginLeft='10px' flexShrink='0' />
+          <IconButton
+            type='submit'
+            icon={<SearchIcon />}
+            aria-label='Search products'
+            variant='ghost'
+            size='sm'
+            minW='auto'
+            h='auto'
+            p='0'
+            ml='10px'
+            flexShrink='0'
+            _hover={{ bgColor: 'transparent' }}
+          />
         </Flex>
 
-        <Button sx={iconButtonStyles} aria-label='Wishlist'>
-          <Image src={wishList} alt='' />
-        </Button>
+        <Box position='relative'>
+          <Button
+            as={RouterLink}
+            to='/wishlist'
+            sx={iconButtonStyles}
+            aria-label='Wishlist'
+          >
+            <Image src={wishList} alt='' />
+          </Button>
+          {wishlistCount > 0 && (
+            <Badge
+              position='absolute'
+              top='0'
+              right='0'
+              minW='18px'
+              h='18px'
+              px='4px'
+              display='grid'
+              placeContent='center'
+              borderRadius='full'
+              bgColor={designSystem.secondary2}
+              color='white'
+              fontSize='10px'
+              pointerEvents='none'
+            >
+              {wishlistCount}
+            </Badge>
+          )}
+        </Box>
         <Box position='relative'>
           <Button
             as={RouterLink}

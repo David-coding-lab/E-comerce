@@ -1,5 +1,8 @@
 import { Button, Icon } from '@chakra-ui/react'
-import { useState } from 'react'
+import {
+  useWishlistActions,
+  useWishlistItem,
+} from '../../context/wishlistContext'
 
 const buttonStyles = {
   display: 'grid',
@@ -11,14 +14,24 @@ const buttonStyles = {
   h: '40px',
 }
 
-function Like() {
-  const [liked, setLiked] = useState(false)
+function Like({ product }) {
+  const liked = useWishlistItem(product?.id)
+  const { toggleItem } = useWishlistActions()
+
+  const handleClick = (event) => {
+    event.stopPropagation()
+
+    if (product) {
+      toggleItem(product)
+    }
+  }
 
   return (
     <Button
       sx={buttonStyles}
       aria-label={liked ? 'Remove from wishlist' : 'Add to wishlist'}
-      onClick={() => setLiked((prevLiked) => !prevLiked)}
+      aria-pressed={liked}
+      onClick={handleClick}
     >
       <Icon
         stroke={liked ? 'none' : 'black'}

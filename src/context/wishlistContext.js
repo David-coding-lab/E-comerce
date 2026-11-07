@@ -1,13 +1,53 @@
-import { createContext, useContext } from 'react'
+import { useCallback, useMemo, useSyncExternalStore } from 'react'
+import { wishlistStore } from './wishlistStore'
 
-export const WishlistContext = createContext(null)
+const wishlistActions = {
+  toggleItem: wishlistStore.toggleItem,
+  removeItem: wishlistStore.removeItem,
+  clearWishlist: wishlistStore.clear,
+}
+
+export function useWishlistItems() {
+  return useSyncExternalStore(
+    wishlistStore.subscribe,
+    wishlistStore.getItems,
+  )
+}
+
+export function useWishlistCount() {
+  return useSyncExternalStore(
+    wishlistStore.subscribe,
+    wishlistStore.getCount,
+  )
+}
+
+export function useWishlistItem(productId) {
+  const subscribe = useCallback(
+    (listener) => wishlistStore.subscribeItem(productId, listener),
+    [productId],
+  )
+  const getSnapshot = useCallback(
+    () => wishlistStore.isWishlisted(productId),
+    [productId],
+  )
+
+  return useSyncExternalStore(subscribe, getSnapshot)
+}
+
+export function useWishlistActions() {
+  return wishlistActions
+}
 
 export function useWishlist() {
-  const context = useContext(WishlistContext)
+  const items = useWishlistItems()
 
-  if (!context) {
-    throw new Error('useWishlist must be used within a WishlistProvider')
-  }
-
-  return context
+  return useMemo(
+    () => ({
+      items,
+      itemCount: items.length,
+      ...wishlistActions,
+      isWishlisted: wishlistStore.isWishlisted,
+    }),
+    [items],
+  )
 }

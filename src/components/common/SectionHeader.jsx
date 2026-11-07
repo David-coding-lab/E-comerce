@@ -28,10 +28,12 @@ function SectionHeader({
 }) {
   return (
     <VStack align='stretch' justify='space-between' w='100%' h='auto' gap={{ base: '16px', md: '25px' }}>
-      <Badge sx={badgeStyles}>
-        <Text sx={barStyles} />
-        {badgeText}
-      </Badge>
+      {badgeText && (
+        <Badge sx={badgeStyles}>
+          <Text sx={barStyles} />
+          {badgeText}
+        </Badge>
+      )}
       <Flex
         fontFamily={designSystem.font2}
         fontWeight={titleFontWeight}

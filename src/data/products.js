@@ -294,4 +294,19 @@ export function getProductsByCategory(category) {
   return productCatalog.filter((product) => product.category === category)
 }
 
+export function searchProducts(query) {
+  const normalizedQuery = query.trim().toLowerCase()
+
+  if (!normalizedQuery) {
+    return []
+  }
+
+  return productCatalog.filter((product) => {
+    const name = product.name.toLowerCase()
+    const category = product.category.replace(/-/g, ' ').toLowerCase()
+
+    return name.includes(normalizedQuery) || category.includes(normalizedQuery)
+  })
+}
+
 export default products

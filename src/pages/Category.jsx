@@ -22,7 +22,7 @@ function Category() {
 
       <BannerLinks />
 
-      <SectionHeader badgeText='Category' title={title} />
+      <SectionHeader title={title} />
 
       <Box mt='60px'>
         {categoryProducts.length > 0 ? (

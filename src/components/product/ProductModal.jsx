@@ -299,7 +299,7 @@ function ProductModal({ product }) {
                 Buy Now
               </Button>
 
-              <Like />
+              <Like product={product} />
             </HStack>
 
             <Container

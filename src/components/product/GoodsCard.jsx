@@ -154,7 +154,7 @@ function GoodsCard({ product }) {
             </Badge>
           )}
 
-          <Like />
+          <Like product={product} />
         </Box>
       </CardBody>
 

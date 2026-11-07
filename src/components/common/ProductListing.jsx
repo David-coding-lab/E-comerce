@@ -1,4 +1,4 @@
-import { Box, Divider, SimpleGrid } from '@chakra-ui/react'
+import { Box, Divider, SimpleGrid, Text } from '@chakra-ui/react'
 import { designSystem } from '../../styles/theme'
 import { products } from '../../data/products'
 import SectionHeader from './SectionHeader'
@@ -11,6 +11,9 @@ function ProductListing({
   title,
   rightContent,
   products: productList = products,
+  showNewArrival = true,
+  emptyTitle = 'No products found',
+  emptyDescription = 'Try a different search or category.',
 }) {
   return (
     <Box marginInline={designSystem.defaultMargin} pt='40px'>
@@ -23,20 +26,42 @@ function ProductListing({
         stackOnMobile={Boolean(rightContent)}
       />
 
-      <SimpleGrid
-        mt={{ base: '30px', md: '50px' }}
-        columns={{ base: 1, sm: 2, lg: 3, xl: 4 }}
-        gridRowGap={{ base: '24px', md: '40px' }}
-        gridColumnGap={{ base: '16px', md: '40px' }}
-      >
-        {productList.map((product) => (
-          <GoodsCard key={product.id} product={product} />
-        ))}
-      </SimpleGrid>
+      {productList.length > 0 ? (
+        <SimpleGrid
+          mt={{ base: '30px', md: '50px' }}
+          columns={{ base: 1, sm: 2, lg: 3, xl: 4 }}
+          gridRowGap={{ base: '24px', md: '40px' }}
+          gridColumnGap={{ base: '16px', md: '40px' }}
+        >
+          {productList.map((product) => (
+            <GoodsCard key={product.id} product={product} />
+          ))}
+        </SimpleGrid>
+      ) : (
+        <Box
+          mt={{ base: '30px', md: '50px' }}
+          border='1px solid'
+          borderColor='gray.200'
+          borderRadius='12px'
+          py={{ base: '48px', md: '64px' }}
+          px='20px'
+          textAlign='center'
+        >
+          <Text fontSize='lg' fontWeight='semibold'>
+            {emptyTitle}
+          </Text>
+          <Text color='gray.500' mt='8px'>
+            {emptyDescription}
+          </Text>
+        </Box>
+      )}
 
-      <Divider mt='70px' mb='70px' />
-
-      <NewArrival />
+      {showNewArrival && (
+        <>
+          <Divider mt='70px' mb='70px' />
+          <NewArrival />
+        </>
+      )}
     </Box>
   )
 }
