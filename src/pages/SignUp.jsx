@@ -2,7 +2,6 @@ import {
   Box,
   Button,
   HStack,
-  IconButton,
   Image,
   Input,
   Text,
@@ -15,14 +14,14 @@ import google from '../assets/Icons/Icon-Google.png'
 import { designSystem } from '../styles/theme'
 
 const inputStyles = {
-  w: '400px',
+  w: '100%',
   border: '0',
   borderBottom: '1px solid rgba(0, 0, 0, 0.5)',
   borderRadius: '0',
 }
 
 const submitButtonStyles = {
-  w: '350px',
+  w: '100%',
   h: '56px',
   borderRadius: '4px',
   color: 'white',
@@ -34,50 +33,46 @@ const submitButtonStyles = {
 }
 
 const googleButtonStyles = {
-  w: '350px',
+  w: '100%',
   h: '56px',
   borderRadius: '4px',
   fontWeight: 'normal',
-}
-
-const googleIconButtonStyles = {
-  bgColor: 'transparent',
-  _hover: { bgColor: 'transparent' },
+  gap: '12px',
 }
 
 function SignUp() {
   return (
     <AuthShell>
-      <Box m='auto' ml='129px'>
+      <Box w='100%' maxW={{ base: '420px', md: '440px' }} mx='auto'>
         <BackButton />
 
         <Text
           fontFamily={designSystem.font1}
-          fontSize='30px'
+          fontSize={{ base: '24px', md: '30px' }}
           fontWeight='medium'
           mb='10px'
         >
           Create an account
         </Text>
-        <Text mb='48px'>Enter your details below</Text>
+        <Text mb={{ base: '32px', md: '48px' }}>Enter your details below</Text>
 
-        <VStack gap='40px'>
+        <VStack gap={{ base: '32px', md: '40px' }} w='100%'>
           <Input sx={inputStyles} placeholder='Name' />
           <Input sx={inputStyles} placeholder='Email or Phone Number' />
           <Input sx={inputStyles} type='password' placeholder='Password' />
         </VStack>
 
-        <VStack gap='16px' mt='40px' fontFamily={designSystem.font1}>
+        <VStack gap='16px' mt={{ base: '32px', md: '40px' }} w='100%' fontFamily={designSystem.font1}>
           <Button sx={submitButtonStyles}>Create Account</Button>
 
-          <Button sx={googleButtonStyles}>
-            <IconButton sx={googleIconButtonStyles} aria-label='Sign up with Google'>
-              <Image src={google} alt='' />
-            </IconButton>{' '}
+          <Button
+            sx={googleButtonStyles}
+            leftIcon={<Image src={google} alt='' boxSize='20px' />}
+          >
             Sign up with Google
           </Button>
 
-          <HStack>
+          <HStack flexWrap='wrap' justifyContent='center' rowGap='4px'>
             <Text>Already have account?</Text>
             <Text as={Link} to='/login' textDecor='underline'>
               Login

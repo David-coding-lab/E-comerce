@@ -1,14 +1,4 @@
-import {
-  Button,
-  Container,
-  HStack,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Text,
-} from '@chakra-ui/react'
-import { ChevronDownIcon } from '@chakra-ui/icons'
+import { Button, Container, HStack, Text } from '@chakra-ui/react'
 import { designSystem } from '../../styles/theme'
 
 const buttonStyles = {
@@ -22,8 +12,6 @@ const buttonStyles = {
   },
 }
 
-const languages = ['French', 'Spanish', 'Igbo']
-
 function TopBanner() {
   return (
     <Container
@@ -35,7 +23,7 @@ function TopBanner() {
       display={{ base: 'none', md: 'flex' }}
       flexDirection={{ base: 'column', sm: 'row' }}
       gap={{ base: '4px', sm: '12px' }}
-      justifyContent='space-between'
+      justifyContent='center'
       alignItems='center'
       paddingInline={designSystem.defaultMargin}
       color='white'
@@ -50,28 +38,6 @@ function TopBanner() {
           ShopNow
         </Button>
       </HStack>
-
-      <Menu>
-        {({ isOpen }) => (
-          <>
-            <MenuButton
-              isActive={isOpen}
-              fontWeight='normal'
-              sx={buttonStyles}
-              as={Button}
-              rightIcon={<ChevronDownIcon />}
-            >
-              English
-            </MenuButton>
-
-            <MenuList color='black'>
-              {languages.map((language) => (
-                <MenuItem key={language}>{language}</MenuItem>
-              ))}
-            </MenuList>
-          </>
-        )}
-      </Menu>
     </Container>
   )
 }

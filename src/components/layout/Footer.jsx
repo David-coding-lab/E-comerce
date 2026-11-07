@@ -31,7 +31,7 @@ const textLinkStyles = {
 }
 
 const accountLinks = ['My Account', 'Login/ Register', 'Cart', 'Wishlist', 'Shop']
-const quickLinks = ['Privacy Policy', 'Terms Of Use', 'FAQ', 'Contact']
+const quickLinks = ['Privacy Policy', 'Terms Of Use', 'Contact']
 const socialIcons = [facebookIcon, twitterIcon, instagramIcon, linkedIn]
 
 function Footer() {
@@ -52,7 +52,7 @@ function Footer() {
       paddingInline={designSystem.defaultMargin}
     >
       <GridItem w='100%'>
-        <Text sx={textHeadingStyles}>Exclusive</Text>
+        <Text sx={textHeadingStyles}>Velora</Text>
         <Text fontWeight='semibold' fontSize='20px'>
           Subscribe
         </Text>

@@ -78,7 +78,7 @@ function NavBar() {
         marginRight={{ base: '0', lg: '190px' }}
         as='h1'
       >
-        Exclusive
+        Velora
       </Text>
 
       <HStack

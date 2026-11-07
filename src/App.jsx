@@ -11,6 +11,7 @@ import About from './pages/About'
 import SignUp from './pages/SignUp'
 import Login from './pages/Login'
 import Checkout from './pages/Checkout'
+import OrderConfirmation from './pages/OrderConfirmation'
 import Cart from './pages/Cart'
 import Wishlist from './pages/Wishlist'
 import Search from './pages/Search'
@@ -33,6 +34,7 @@ function App() {
           <Route path='wishlist' element={<Wishlist />} />
           <Route path='search' element={<Search />} />
           <Route path='checkout' element={<Checkout />} />
+          <Route path='order-confirmation' element={<OrderConfirmation />} />
           <Route path='*' element={<Home />} />
         </Route>
       </Routes>

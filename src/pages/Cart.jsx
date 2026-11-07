@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom'
 import BackButton from '../components/common/BackButton'
 import { useCart } from '../context/cartContext'
 import { getSizesForCategory } from '../data/categories'
+import { FREE_SHIPPING_THRESHOLD } from '../data/deliveryLocations'
 import { designSystem } from '../styles/theme'
 import { formatPrice, parsePrice } from '../utils/price'
 import cartIcon from '../assets/Icons/Cart1.png'
@@ -43,7 +44,9 @@ function Cart() {
   const { items, itemCount, subtotal, removeItem, updateQuantity, updateSize } =
     useCart()
 
-  const shipping = subtotal > 140 ? 0 : 10
+  const originalShipping = 10
+  const isFreeShipping = subtotal >= FREE_SHIPPING_THRESHOLD
+  const shipping = isFreeShipping ? 0 : originalShipping
   const total = subtotal + shipping
 
   return (
@@ -266,10 +269,28 @@ function Cart() {
               </HStack>
               <HStack justifyContent='space-between'>
                 <Text color='gray.600'>Shipping</Text>
-                <Text fontWeight='medium'>
-                  {shipping === 0 ? 'Free' : formatPrice(shipping)}
-                </Text>
+                {isFreeShipping ? (
+                  <HStack spacing='8px'>
+                    <Text as='s' color='gray.400' fontWeight='medium'>
+                      {formatPrice(originalShipping)}
+                    </Text>
+                    <Text fontWeight='semibold' color='green.600'>
+                      Free
+                    </Text>
+                  </HStack>
+                ) : (
+                  <Text fontWeight='medium'>{formatPrice(shipping)}</Text>
+                )}
               </HStack>
+              <Text
+                fontSize='xs'
+                color={isFreeShipping ? 'green.600' : 'gray.500'}
+                mt='6px'
+              >
+                {isFreeShipping
+                  ? 'Free delivery unlocked — your shipping fee has been slashed.'
+                  : `Add ${formatPrice(Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal))} more for free delivery.`}
+              </Text>
 
               <Divider my='16px' />
 

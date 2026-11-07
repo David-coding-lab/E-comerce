@@ -94,9 +94,8 @@ function Contact() {
                 <Text sx={infoHeadingStyles}>Call To Us</Text>
               </HStack>
               <Text mb='10px' fontSize='15px'>
-                We are available 24/7, 7 days a week.
+                Our team is fully available to assist you 24 hours a day, 7 days a week.
               </Text>
-              <Text fontSize='15px'>Phone: +234 7010885943</Text>
             </Box>
 
             <Box sx={infoCardStyles}>
@@ -109,10 +108,6 @@ function Contact() {
               <Text mb='10px' fontSize='15px'>
                 Fill out our form and we will contact you within 24 hours.
               </Text>
-              <Text mb='6px' fontSize='15px'>
-                Emails: emekad745@gmail.com
-              </Text>
-              <Text fontSize='15px'>Emails: dave997996@gmail.com</Text>
             </Box>
           </SimpleGrid>
 

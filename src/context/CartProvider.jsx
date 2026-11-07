@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { CartActionsContext, CartContext } from './cartContext'
 import { parsePrice } from '../utils/price'
 
-const STORAGE_KEY = 'exclusive-cart'
+const STORAGE_KEY = 'velora-cart'
 
 function getItemKey(product, size) {
   return `${product.id}::${size ?? 'default'}`

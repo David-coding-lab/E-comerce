@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'exclusive-wishlist'
+const STORAGE_KEY = 'velora-wishlist'
 
 function readStoredItems() {
   if (typeof window === 'undefined') {

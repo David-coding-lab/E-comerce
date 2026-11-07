@@ -1,8 +1,4 @@
 import { Box, Container, Flex, Grid, HStack, Icon, IconButton, Image, Text, VStack } from '@chakra-ui/react'
-import aboutImg from '../assets/about image.png'
-import tomCruise from '../assets/Icons/tom.png'
-import emmaWatson from '../assets/Icons/emma.png'
-import willSmit from '../assets/Icons/will.png'
 import twitter from '../assets/Icons/Icon-Twitter.png'
 import instagram from '../assets/Icons/icon-instagram.png'
 import linkedin from '../assets/Icons/Icon-Linkedin.png'
@@ -10,6 +6,11 @@ import ServiceHighlights from '../components/common/ServiceHighlights'
 import BackButton from '../components/common/BackButton'
 import { designSystem } from '../styles/theme'
 function About() {
+  const teamImageStyles = {
+    w: '100%',
+    aspectRatio: 1,
+    objectFit: 'cover',
+  }
   const containerStyles = {
     maxW: '100%',
     w: '100%',
@@ -61,13 +62,11 @@ function About() {
             fontWeight='bold'
             mb={{ base: '20px', md: '40px' }}
           >Our Story</Text>
-          <Text mb='24px' fontSize={{ base: 'sm', md: 'md' }}>Launched in 2015, Exclusive is South Asia’s premier online shopping marketplace
-            with an active presence in Bangladesh. Supported by a wide range of tailored marketing,
-            data and service solutions, Exclusive has 10,500 sellers and 300 brands and serves 3
-            million customers across the region.
+          <Text mb='24px' fontSize={{ base: 'sm', md: 'md' }}>At Velora, we believe shopping should be simple, exciting, and accessible to everyone. We bring together quality products, trusted sellers, and a seamless shopping experience in one convenient destination.
+
+From everyday essentials to the latest trends, our mission is to make discovering and purchasing the things you love easier than ever. We&apos;re building more than an online store — we&apos;re creating a shopping experience built around convenience, trust, and value.
           </Text>
-          <Text fontSize={{ base: 'sm', md: 'md' }}>Exclusive has more than 1 million products to offer and is growing very fast.
-            Exclusive offers a diverse assortment of categories ranging from consumer goods.
+          <Text fontSize={{ base: 'sm', md: 'md' }}>Velora brings together a growing collection of products across multiple categories, making it easier for customers to find everything they need in one place. From fashion and electronics to beauty, home essentials, and everyday lifestyle products, we offer a diverse shopping experience designed around convenience, quality, and value.
           </Text>
         </Box>
         <Box
@@ -76,7 +75,7 @@ function About() {
           h='auto'
           ml={{ base: '0', lg: 'auto' }}
         >
-          <Image src={aboutImg} w='100%' h='auto' objectFit='cover' />
+          <Image src='https://images.unsplash.com/photo-1760565030264-c737b92e887d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D' w='100%' h='auto' objectFit='cover' />
         </Box>
       </Flex>
       <Grid
@@ -162,8 +161,8 @@ function About() {
         justifyContent='center'
       >
         <Box w='100%' maxW='370px' h='auto' mx='auto'>
-          <Image src={tomCruise} w='100%' h='auto' />
-          <Text mt='32px' fontFamily={designSystem.font2} fontSize='20px' fontWeight='semibold'>Tom Cruise</Text>
+          <Image src='https://images.unsplash.com/photo-1764084052708-c3c0611d89e7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D' sx={teamImageStyles} />
+          <Text mt='32px' fontFamily={designSystem.font2} fontSize='20px' fontWeight='semibold'>Jay Parks</Text>
           <Text fontFamily={designSystem.font1} fontSize='15px'>Founder & Chairman</Text>
           <HStack>
             <IconButton bgColor='transparent' _hover={{bgColor: 'none'}}><Image src={twitter} /></IconButton>
@@ -172,8 +171,8 @@ function About() {
           </HStack>
         </Box>
         <Box w='100%' maxW='370px' h='auto' mx='auto'>
-          <Image src={emmaWatson} w='100%' h='auto' />
-          <Text mt='32px' fontFamily={designSystem.font2} fontSize='20px' fontWeight='semibold'>Emma Watson</Text>
+          <Image src='https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D' sx={teamImageStyles} />
+          <Text mt='32px' fontFamily={designSystem.font2} fontSize='20px' fontWeight='semibold'>Jay Robinson</Text>
           <Text fontFamily={designSystem.font1} fontSize='15px'>Managing Director</Text>
           <HStack>
             <IconButton bgColor='transparent' _hover={{bgColor: 'none'}}><Image src={twitter} /></IconButton>
@@ -182,8 +181,8 @@ function About() {
           </HStack>
         </Box>
         <Box w='100%' maxW='370px' h='auto' mx='auto'>
-          <Image src={willSmit} w='100%' h='auto' />
-          <Text mt='32px' fontFamily={designSystem.font2} fontSize='20px' fontWeight='semibold'>Will Smith</Text>
+          <Image src='https://images.unsplash.com/photo-1770510067230-1059f0776b3a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D' sx={teamImageStyles} />
+          <Text mt='32px' fontFamily={designSystem.font2} fontSize='20px' fontWeight='semibold'>Greg Anthony</Text>
           <Text fontFamily={designSystem.font1} fontSize='15px'>Product Designer</Text>
           <HStack>
             <IconButton bgColor='transparent' _hover={{bgColor: 'none'}}><Image src={twitter} /></IconButton>
